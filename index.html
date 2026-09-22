@@ -1,0 +1,1602 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<script>(function(){var l="ar";try{l=localStorage.getItem("sw-lang")||"ar"}catch(e){}document.documentElement.lang=l;document.documentElement.dir=l==="en"?"ltr":"rtl";try{var t=localStorage.getItem("sw-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الموجة الذكية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#ffffff; --alt:#f3f6f9; --ink:#0e1c2b; --muted:#5b6876; --line:#e3e8ee;
+  --surface:#ffffff; --edge:#0e1c2b; --solid:#0e1c2b; --solid-text:#ffffff; --header:rgba(255,255,255,.9);
+  --blue:#15588f; --blue-2:#1d6aa9; --blue-text:#15588f; --blue-soft:#eaf2fa; --lime:#91c546; --lime-soft:#eef7e2; --green-text:#4f7d1a;
+  --gold:#cf9e46; --gold-soft:#f6e8cc; --gold-text:#8a6420; --tint-blue:#dcebf8; --tint-gold:#f6e8cc;
+  --display:"Alexandria","IBM Plex Sans Arabic",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b1621; --alt:#111f2c; --ink:#e8eef4; --muted:#9fb0bf; --line:#23364a;
+  --surface:#142433; --edge:#6f8aa3; --solid:#e8eef4; --solid-text:#0b1621; --header:rgba(11,22,33,.88);
+  --blue-text:#78b6ec; --blue-soft:#15304a; --lime-soft:#1b2d18; --green-text:#a6d46a;
+  --gold-soft:#342a17; --gold-text:#e3b766; --tint-blue:#1d3a55; --tint-gold:#3d3120;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0b1621; --alt:#111f2c; --ink:#e8eef4; --muted:#9fb0bf; --line:#23364a;
+  --surface:#142433; --edge:#6f8aa3; --solid:#e8eef4; --solid-text:#0b1621; --header:rgba(11,22,33,.88);
+  --blue-text:#78b6ec; --blue-soft:#15304a; --lime-soft:#1b2d18; --green-text:#a6d46a;
+  --gold-soft:#342a17; --gold-text:#e3b766; --tint-blue:#1d3a55; --tint-gold:#3d3120;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html:not([dir="ltr"]){direction:rtl}
+html[dir="ltr"]{--start:left}
+html[dir="ltr"] body{font-family:"IBM Plex Sans Arabic",system-ui,sans-serif}
+html{--start:right;scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,"Segoe UI",Tahoma,sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{overflow-wrap:anywhere}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue-2);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1160px;margin-inline:auto;padding-inline:20px}
+.logo{display:block;width:96px;height:42px;background:url("logo.svg") center right/contain no-repeat}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;font:inherit;font-weight:700;font-size:15px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:active{transform:scale(.97)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{box-shadow:0 12px 28px -10px rgba(21,88,143,.6);transform:translateY(-2px)}
+.btn-white{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.btn-white:hover{border-color:var(--edge)}
+section{padding-block:88px}
+.head{text-align:center;max-width:640px;margin:0 auto 36px}
+.head .kick{display:inline-block;font-size:13px;font-weight:700;color:var(--gold-text);margin-bottom:8px}
+.head h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,5vw,42px);line-height:1.35;text-wrap:balance}
+.head p{color:var(--muted);margin-top:10px;font-size:17px}
+
+/* ---------- header ---------- */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--header);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.links{display:none;gap:26px;font-size:15px;font-weight:500}
+.links a{text-decoration:none;color:var(--muted);transition:color .2s}
+.links a:hover{color:var(--ink)}
+.nav-end{display:flex;align-items:center;gap:6px}
+.nav-end .btn{min-height:42px;padding:0 20px}
+.menu-btn{width:44px;height:44px;border:0;background:none;border-radius:12px;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+@media (min-width:900px){.links{display:flex}.menu-btn{display:none!important}}
+.menu-btn{flex-direction:column;gap:6px}
+.menu-btn i{display:block;width:22px;height:2px;border-radius:2px;background:currentColor;transition:transform .35s cubic-bezier(.2,.9,.1,1)}
+.menu-btn:hover i:first-child{transform:translateX(-3px)}
+.drawer{position:fixed;inset:0;z-index:70;visibility:hidden;transition:visibility 0s .6s}
+.drawer.open{visibility:visible;transition:none}
+.drawer-bg{position:absolute;inset:0;background:rgba(14,28,43,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .45s}
+.drawer.open .drawer-bg{opacity:1}
+.drawer-panel{position:absolute;top:0;bottom:0;inset-inline-start:0;width:min(86vw,380px);background:var(--surface);border-start-end-radius:28px;border-end-end-radius:28px;box-shadow:0 30px 80px -20px rgba(14,28,43,.5);padding:calc(14px + env(safe-area-inset-top,0px)) 22px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;overflow:hidden auto;transform:translateX(105%);transition:transform .6s cubic-bezier(.2,.9,.1,1)}
+html[dir="ltr"] .drawer-panel{transform:translateX(-105%)}
+.drawer.open .drawer-panel{transform:none}
+.drawer-top{display:flex;align-items:center;justify-content:space-between}
+.menu-x{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;transform:rotate(-90deg) scale(.6);opacity:0;transition:transform .5s cubic-bezier(.2,.9,.1,1) .15s,opacity .3s .15s}
+.drawer.open .menu-x{transform:none;opacity:1}
+.drawer-links{display:flex;flex-direction:column;margin-top:8px}
+.dl{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;padding:0 6px;border-bottom:1px solid var(--line);font-family:var(--display);font-weight:800;font-size:22px;text-decoration:none;color:var(--ink);opacity:0;transform:translateX(40px);transition:opacity .35s,transform .55s cubic-bezier(.2,.9,.1,1),color .2s,padding .25s}
+html[dir="ltr"] .dl{transform:translateX(-40px)}
+html[dir="ltr"] .dl svg{transform:scaleX(-1)}
+.dl svg{color:var(--muted);transition:transform .25s}
+.dl:hover{color:var(--blue-text);padding-inline-start:12px}
+.drawer.open .dl{opacity:1;transform:none;transition-delay:calc(.12s + var(--i) * .055s)}
+.drawer-cta{display:flex;flex-direction:column;gap:8px;margin-top:10px;opacity:0;transform:translateY(20px);transition:opacity .4s,transform .5s cubic-bezier(.2,.9,.1,1)}
+.drawer.open .drawer-cta{opacity:1;transform:none;transition-delay:calc(.14s + var(--i) * .055s)}
+.drawer-wave{position:absolute;inset-inline:0;bottom:0;width:100%;height:120px;pointer-events:none;z-index:-1}
+.drawer-panel{isolation:isolate}
+@media (min-width:900px){.drawer{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;isolation:isolate;padding-top:40px;padding-bottom:330px}
+#wave{position:absolute;inset-inline:0;bottom:0;width:100%;height:400px;z-index:-1;display:block}
+.hero .copy{text-align:center;max-width:760px;margin-inline:auto}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--blue-text);background:var(--blue-soft);padding:5px 14px;border-radius:999px;text-decoration:none}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--lime);animation:ping 1.8s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(145,197,70,.7)}70%,100%{box-shadow:0 0 0 10px rgba(145,197,70,0)}}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,7.4vw,68px);line-height:1.3;margin-top:8px;letter-spacing:-.01em;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--blue-text)}
+.hero h1 .rot{display:inline-block;min-height:1.3em;will-change:transform}
+.hero .copy p{margin-top:14px;color:var(--muted);font-size:clamp(16px,2vw,19px)}
+.hero .cta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- numbers ---------- */
+.numbers{padding-block:8px 72px}
+.numbers .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px;text-align:center}
+.numbers strong{display:block;font-family:var(--display);font-weight:800;font-size:clamp(34px,7vw,62px);line-height:1.15;font-variant-numeric:tabular-nums}
+.numbers strong small{font-size:.34em;font-weight:700;color:var(--muted);margin-inline-start:4px}
+.numbers span{color:var(--muted);font-size:15px}
+.numbers div:nth-child(1) strong{color:var(--blue-text)}
+.numbers div:nth-child(2) strong{color:var(--green-text)}
+.numbers div:nth-child(3) strong{color:var(--gold-text)}
+@media (min-width:760px){.numbers .grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.wave-div{display:block;width:100%;height:48px}
+
+/* ---------- plans ---------- */
+.plans{background:var(--alt)}
+.seg{display:flex;width:max-content;max-width:100%;margin:0 auto 28px;padding:4px;background:var(--surface);border:2px solid var(--edge);border-radius:999px;position:relative}
+.seg button{position:relative;z-index:1;min-height:44px;padding:0 24px;border:0;background:none;font:inherit;font-weight:700;font-size:15px;color:var(--ink);border-radius:999px;cursor:pointer;transition:color .3s}
+.seg button[aria-selected="true"]{color:var(--solid-text)}
+.seg .thumb{position:absolute;top:4px;bottom:4px;border-radius:999px;background:var(--solid);transition:all .4s cubic-bezier(.6,0,.2,1)}
+.plans-scroll{overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-20px;padding:14px 20px 26px;scrollbar-width:none}
+.plans-scroll::-webkit-scrollbar{display:none}
+.plan-grid{display:grid;grid-auto-flow:column;grid-auto-columns:80%;gap:18px}
+@media (min-width:640px){.plan-grid{grid-auto-columns:46%}}
+@media (min-width:1024px){.plans-scroll{overflow:visible;margin:0;padding-inline:0}.plan-grid{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr))}}
+.card{scroll-snap-align:center;position:relative;display:flex;flex-direction:column;background:var(--surface);border:2px solid var(--edge);border-radius:22px;padding:22px;box-shadow:6px 6px 0 var(--edge);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--edge)}
+.card.hot{background:var(--lime-soft)}
+.card .badge{position:absolute;top:-14px;left:18px;background:var(--gold);color:#0e1c2b;border:2px solid var(--edge);font-weight:700;font-size:12px;padding:2px 12px;border-radius:999px}
+.card .ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;border:2px solid var(--edge)}
+.card h3{font-family:var(--display);font-weight:800;font-size:19px;margin-top:14px}
+.card .spd{display:flex;align-items:baseline;gap:6px;margin-top:4px}
+.card .spd b{font-family:var(--display);font-weight:800;font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
+.card .spd span{font-weight:700;color:var(--muted)}
+.card .ud2{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.card .ud2 span{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;border:1.5px solid var(--line);border-radius:999px;padding:1px 10px;font-variant-numeric:tabular-nums}
+.card .meter{height:8px;border-radius:999px;background:var(--alt);border:1.5px solid var(--edge);margin-top:12px;overflow:hidden}
+.card .meter i{display:block;height:100%;background:var(--blue-2);transform-origin:var(--start);transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.card.hot .meter i{background:var(--lime)}
+.card ul{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:6px;font-size:14px;flex-grow:1}
+.card li{display:flex;gap:8px;align-items:flex-start}
+.card li svg{flex:none;margin-top:4px}
+.card .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:18px;padding-top:14px;border-top:2px dashed var(--line)}
+.card .price{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.card .price small{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:13px;font-weight:500;color:var(--muted)}
+.card .foot .btn{min-height:42px;padding:0 18px;background:var(--solid);color:var(--solid-text)}
+.swipe{text-align:center;color:var(--muted);font-size:13px}
+@media (min-width:1024px){.swipe{display:none}}
+
+/* ---------- coverage (mini city) ---------- */
+.coverage .grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:center}
+.scene{position:relative;width:100%;max-width:600px;aspect-ratio:1/1;margin-inline:auto}
+#city{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+#city:active{cursor:grabbing}
+.map-tag{position:absolute;top:3%;inset-inline:0;margin-inline:auto;width:max-content;max-width:90%;z-index:2;display:flex;align-items:center;gap:8px;background:var(--surface);border:2px solid var(--edge);border-radius:999px;padding:6px 14px;font-weight:800;font-size:15px;box-shadow:4px 4px 0 var(--edge);pointer-events:none}
+.map-tag i{width:10px;height:10px;border-radius:50%;flex:none}
+.map-tag small{font-weight:700;color:var(--muted);font-size:12px}
+.legend{position:absolute;bottom:3%;inset-inline:0;display:flex;justify-content:center;gap:14px;font-size:13px;color:var(--muted);pointer-events:none}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-inline-end:6px;vertical-align:middle}
+.cov-copy .head{text-align:start;margin:0 0 20px}
+.finder{display:flex;flex-direction:column;gap:8px}
+.finder label{font-weight:700;font-size:15px}
+.finder .row{display:flex;gap:8px}
+.finder input{flex:1;min-width:0;min-height:52px;border-radius:14px;border:2px solid var(--edge);background:var(--surface);padding:0 16px;font:inherit;font-size:16px;color:var(--ink)}
+.finder input:focus{outline:none;box-shadow:4px 4px 0 var(--lime)}
+.result{margin-top:14px;min-height:64px}
+.result .hit{display:flex;gap:12px;align-items:center;background:var(--lime-soft);border:2px solid var(--edge);border-radius:16px;padding:12px 14px}
+.result .hit b{display:block}
+.result .hit span{font-size:14px;color:var(--muted)}
+.result .miss{color:var(--muted);font-size:15px}
+@media (min-width:900px){.coverage .grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px}}
+
+/* ---------- why ---------- */
+.why{background:var(--alt)}
+.tiles{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media (min-width:760px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.ping{position:relative;height:84px;border-radius:14px;background:var(--alt);overflow:hidden}
+.ping svg{position:absolute;inset:0;width:200%;height:100%;animation:pingmove 6s linear infinite}
+@keyframes pingmove{to{transform:translateX(-50%)}}
+html[dir="ltr"] .ping svg{animation-direction:reverse}
+.ping .band{position:absolute;inset-inline:0;bottom:14px;height:16px;background:rgba(145,197,70,.18)}
+.ping b{position:absolute;top:8px;inset-inline-start:12px;font-size:12px;font-weight:700;color:var(--green-text)}
+.ud{display:flex;flex-direction:column;gap:10px}
+.ud div{display:grid;grid-template-columns:52px minmax(0,1fr);align-items:center;gap:10px;font-size:13px;font-weight:700}
+.ud i{display:block;height:12px;border-radius:999px;background:var(--blue-2);transform-origin:var(--start);animation:fill 2.4s cubic-bezier(.2,.8,.2,1) infinite alternate}
+.ud div:nth-child(2) i{background:var(--lime);animation-delay:.15s}
+@keyframes fill{from{transform:scaleX(.15)}to{transform:scaleX(1)}}
+.tile{background:var(--surface);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:6px;min-height:250px}
+.tile h3{font-family:var(--display);font-weight:800;font-size:19px;line-height:1.4}
+.tile p{color:var(--muted);font-size:15px}
+.tile .vis{margin-top:auto;padding-top:16px}
+.day{position:relative;height:36px;border-radius:10px;background:var(--alt);overflow:hidden}
+.day .boost{position:absolute;top:0;bottom:0;inset-inline-start:12.5%;width:33.3%;background:var(--lime);display:grid;place-items:center;font-weight:800;font-family:var(--display)}
+.day .now{position:absolute;top:0;bottom:0;width:3px;background:var(--blue)}
+.ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px}
+.eq{display:flex;gap:8px;align-items:flex-end;height:70px}
+.eq i{flex:1;height:100%;border-radius:8px 8px 3px 3px;background:var(--blue-2);transform-origin:bottom;animation:eq 1.3s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:.15s;background:var(--lime)}.eq i:nth-child(3){animation-delay:.3s}.eq i:nth-child(4){animation-delay:.45s;background:var(--gold)}.eq i:nth-child(5){animation-delay:.6s}
+@keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.roll{display:flex;align-items:center;gap:10px}
+.roll div{flex:1;background:var(--alt);border-radius:14px;padding:10px;text-align:center}
+.roll b{display:block;font-family:var(--display);font-weight:800;font-size:24px;color:var(--blue-text)}
+.roll span{font-size:12px;color:var(--muted)}
+.gauge text{font-family:var(--display)}
+
+/* ---------- agents ---------- */
+.agent-search{max-width:520px;margin:0 auto 24px;display:flex;flex-direction:column;gap:8px}
+.agent-search label{font-weight:700;font-size:15px}
+.agent-search input{min-height:52px;border-radius:14px;border:1px solid var(--line);background:var(--alt);padding:0 16px;font:inherit;font-size:16px;color:var(--ink)}
+.agent-search input:focus{outline:none;background:var(--surface);border-color:var(--blue-2);box-shadow:0 0 0 4px rgba(29,106,169,.15)}
+.agents{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:760px){.agents{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.agents{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.agent{display:flex;align-items:center;gap:12px;padding:14px;border-radius:18px;background:var(--alt);transition:background .2s}
+.agent:hover{background:var(--blue-soft)}
+.agent .pin{flex:none;width:44px;height:44px;border-radius:12px;background:var(--surface);display:grid;place-items:center;color:var(--blue-text)}
+.agent div{flex:1;min-width:0}
+.agent b{display:block}
+.agent span{display:block;font-size:14px;color:var(--muted)}
+.agent a,.agent .off{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#fff}
+.agent .off{background:var(--line);color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:20px}
+
+/* ---------- faq ---------- */
+.faq{background:var(--bg)}
+.faq-list{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:10px}
+details{background:var(--surface);border-radius:20px;padding:0 20px;border:1.5px solid var(--line);overflow:hidden;transition:border-color .35s,box-shadow .35s,transform .35s}
+details:hover{border-color:var(--edge)}
+details[open]{border-color:var(--edge);box-shadow:5px 5px 0 var(--edge);transform:translate(-2px,-2px)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:66px;font-weight:700;font-size:17px;line-height:1.5;padding-block:10px}
+summary::-webkit-details-marker{display:none}
+summary span{transition:transform .35s cubic-bezier(.2,.9,.1,1),color .3s}
+details:hover summary span{transform:translateX(-4px)}
+html[dir="ltr"] details:hover summary span{transform:translateX(4px)}
+details[open] summary span{color:var(--blue-text)}
+summary::after{content:"";flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);
+  background:linear-gradient(var(--ink),var(--ink)) center/12px 2px no-repeat,linear-gradient(var(--ink),var(--ink)) center/2px 12px no-repeat,var(--surface);
+  transition:transform .45s cubic-bezier(.2,.9,.1,1),background-color .3s,border-color .3s}
+details[open] summary::after{transform:rotate(135deg);border-color:var(--blue);
+  background:linear-gradient(#fff,#fff) center/12px 2px no-repeat,linear-gradient(#fff,#fff) center/2px 12px no-repeat,var(--blue)}
+details .ans{overflow:hidden}
+details p{color:var(--muted);padding-bottom:20px;max-width:62ch}
+
+/* ---------- footer ---------- */
+footer{background:#0e1c2b;color:#b7c3cf;padding-block:48px calc(96px + env(safe-area-inset-bottom,0px));font-size:14px}
+footer .top{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+footer .logo{width:120px;height:52px;filter:brightness(0) invert(1)}
+footer h4{margin:0 0 8px;color:#fff;font-size:15px}
+footer nav{display:flex;flex-direction:column;gap:4px}
+footer nav a{text-decoration:none}
+footer nav a:hover{color:#fff}
+footer .bottom{margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12)}
+@media (min-width:900px){footer{padding-bottom:48px}}
+
+/* ---------- mobile action bar ---------- */
+.dock{position:fixed;inset-inline:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:45;display:flex;gap:8px;padding:8px;background:var(--surface);border:2px solid var(--edge);border-radius:999px;box-shadow:4px 4px 0 var(--edge);transform:translateY(160%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.dock.show{transform:none}
+.dock .btn{flex:1;min-height:46px}
+.dock .btn-white{border:0;background:var(--alt)}
+@media (min-width:900px){.dock{display:none}}
+
+
+/* ---------- plan finder (quiz) ---------- */
+.quiz{padding-block:72px}
+.quiz-box{max-width:860px;margin-inline:auto;background:var(--surface);border:2px solid var(--edge);border-radius:28px;box-shadow:8px 8px 0 var(--edge);padding:28px;display:flex;flex-direction:column;gap:20px}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.quiz-top h2{font-family:var(--display);font-weight:800;font-size:clamp(21px,4vw,30px);line-height:1.35}
+.steps{display:flex;gap:6px}
+.steps i{width:28px;height:6px;border-radius:999px;background:var(--line);transition:background .3s}
+.steps i.on{background:var(--blue)}
+.q-title{font-weight:700;font-size:19px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.opt{display:flex;align-items:center;gap:12px;min-height:64px;padding:12px 16px;border:2px solid var(--line);border-radius:18px;background:var(--surface);font:inherit;font-weight:700;font-size:16px;color:var(--ink);cursor:pointer;text-align:start;transition:border-color .2s,transform .2s,background .2s}
+.opt:hover{border-color:var(--edge);transform:translateY(-2px)}
+.opt[aria-pressed="true"]{border-color:var(--edge);background:var(--lime-soft);box-shadow:4px 4px 0 var(--edge)}
+.opt .oi{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--alt)}
+.quiz-nav{display:flex;justify-content:space-between;gap:10px}
+.btn-ghost{background:none;color:var(--muted);padding:0 8px}
+.btn-ghost:hover{color:var(--ink)}
+.btn-ink{background:var(--solid);color:var(--solid-text)}
+.btn-ink:disabled{opacity:.35;cursor:not-allowed}
+.rec{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;background:var(--lime-soft);border:2px solid var(--edge);border-radius:22px;padding:20px}
+.rec .ico{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;border:2px solid var(--edge);background:var(--lime)}
+.rec small{color:var(--gold-text);font-weight:700}
+.rec h3{font-family:var(--display);font-weight:800;font-size:23px}
+.rec p{color:var(--muted);margin-top:4px}
+.rec .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.rec .facts span{background:var(--surface);border:1.5px solid var(--edge);border-radius:999px;padding:2px 12px;font-weight:700;font-size:14px}
+.rec-actions{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
+@media (max-width:560px){.quiz-box{padding:20px;box-shadow:5px 5px 0 var(--edge)}.rec{grid-template-columns:1fr}}
+
+/* ---------- compare ---------- */
+.card .cmp{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;margin-top:12px;user-select:none}
+.card .cmp input{width:18px;height:18px;accent-color:var(--solid);margin:0}
+.cmp-bar{position:fixed;inset-inline:0;margin-inline:auto;width:max-content;max-width:calc(100% - 24px);bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:46;display:flex;align-items:center;gap:10px;background:var(--solid);color:var(--solid-text);padding:8px 8px 8px 16px;border-radius:999px;box-shadow:0 18px 40px -16px rgba(14,28,43,.6);transform:translateY(calc(100% + 140px));visibility:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s .35s}
+.cmp-bar.show{transform:none;visibility:visible;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.cmp-bar span{padding-inline-start:8px;font-size:14px}
+.cmp-bar .btn{min-height:40px;padding:0 18px;background:var(--lime);color:#0e1c2b}
+.cmp-bar .x{background:none;border:0;color:#b7c3cf;font:inherit;cursor:pointer;padding:0 8px;min-height:40px}
+@media (min-width:900px){.cmp-bar{bottom:24px}}
+
+/* ---------- dialogs ---------- */
+dialog{border:2px solid var(--edge);border-radius:28px;box-shadow:10px 10px 0 var(--edge);padding:0;width:min(640px,calc(100% - 24px));max-height:calc(100% - 32px);color:var(--ink);background:var(--surface)}
+dialog::backdrop{background:rgba(14,28,43,.45);backdrop-filter:blur(3px)}
+dialog[open]{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{transform:translateY(24px) scale(.97);opacity:0}}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 22px 0}
+.dlg-head h2{font-family:var(--display);font-weight:800;font-size:24px}
+.close{width:44px;height:44px;border-radius:50%;border:2px solid var(--edge);background:var(--surface);display:grid;place-items:center;cursor:pointer;flex:none}
+.dlg-body{padding:18px 22px 22px}
+@media (max-width:560px){dialog{width:100%;max-width:100%;margin:auto 0 0;border-radius:28px 28px 0 0;box-shadow:none;border-bottom:0;max-height:92%}}
+
+/* subscribe form */
+.progress{height:6px;background:var(--alt);border-radius:999px;overflow:hidden;margin:14px 22px 0}
+.progress i{display:block;height:100%;background:var(--blue);width:25%;transition:width .35s}
+.step-label{font-size:13px;font-weight:700;color:var(--gold-text)}
+.fstep{display:flex;flex-direction:column;gap:14px}
+.fstep h3{font-weight:700;font-size:19px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-weight:700;font-size:14px}
+.field input,.field select{min-height:50px;border-radius:14px;border:2px solid var(--line);background:var(--surface);padding:0 14px;font:inherit;font-size:16px;color:var(--ink)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--edge)}
+.field .err{color:#b3261e;font-size:13px;min-height:18px}
+.plan-pick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:300px;overflow:auto;padding:2px}
+.plan-pick button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px;border:2px solid var(--line);border-radius:16px;background:var(--surface);font:inherit;color:var(--ink);cursor:pointer;text-align:start}
+.plan-pick button b{font-size:15px}
+.plan-pick button span{font-size:13px;color:var(--muted)}
+.plan-pick button[aria-pressed="true"]{border-color:var(--edge);background:var(--lime-soft)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:44px;padding:0 16px;border:2px solid var(--line);border-radius:999px;background:var(--surface);font:inherit;font-weight:700;color:var(--ink);cursor:pointer}
+.chips button[aria-pressed="true"]{border-color:var(--edge);background:var(--solid);color:var(--solid-text)}
+.note-box{border-radius:14px;padding:10px 14px;font-size:14px}
+.note-box.warn{background:var(--gold-soft)}
+.note-box.ok{background:var(--lime-soft)}
+.review{display:flex;flex-direction:column;border:2px solid var(--edge);border-radius:18px;overflow:hidden}
+.review div{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border-top:1px solid var(--line)}
+.review div:first-child{border-top:0}
+.review span{color:var(--muted)}
+.form-nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.btn-wa{background:#1f9d55;color:#fff}
+.btn-wa:hover{background:#18874a}
+
+/* compare table */
+.cmp-scroll{overflow-x:auto}
+.cmp-table{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
+@media (max-width:560px){.cmp-table th,.cmp-table td{padding:10px 4px;font-size:13px}.cmp-table th{font-size:13px}.cmp-table td:first-child{font-size:12px}.cmp-table .btn{padding:0 10px;min-height:38px;font-size:13px}}
+.cmp-table th,.cmp-table td{padding:12px 10px;text-align:center;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.cmp-table th{font-family:var(--display);font-weight:800;font-size:16px}
+.cmp-table td:first-child,.cmp-table th:first-child{text-align:start;color:var(--muted);font-weight:500;font-family:inherit;font-size:14px}
+.cmp-table td.best{background:var(--lime-soft);font-weight:800}
+.cmp-table .btn{min-height:40px;padding:0 14px;background:var(--solid);color:var(--solid-text)}
+
+/* coverage checker */
+.status{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--edge);border-radius:999px;padding:2px 12px;font-weight:700;font-size:13px}
+.status i{width:10px;height:10px;border-radius:50%}
+.cov-result{display:flex;flex-direction:column;gap:10px;border:2px solid var(--edge);border-radius:18px;padding:16px;background:var(--surface)}
+.cov-result h3{font-family:var(--display);font-weight:800;font-size:20px}
+.cov-result p{color:var(--muted);font-size:15px}
+.cov-result .acts{display:flex;gap:8px;flex-wrap:wrap}
+.cov-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.area-chip{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px;border-radius:999px;background:var(--alt);border:0;font:inherit;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer}
+.area-chip i{width:8px;height:8px;border-radius:50%}
+.area-chip:hover{background:var(--blue-soft)}
+.example{font-size:12px;color:var(--muted);margin-top:8px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* ---------- support ---------- */
+.help-box{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+@media (min-width:900px){.help-box{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
+.problems{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-content:start}
+@media (min-width:900px){.problems{grid-template-columns:minmax(0,1fr)}}
+.prob{display:flex;align-items:center;gap:12px;min-height:64px;padding:12px 14px;border:2px solid var(--line);border-radius:18px;background:var(--surface);font:inherit;font-weight:700;font-size:15px;color:var(--ink);cursor:pointer;text-align:start;transition:border-color .2s,transform .2s}
+.prob:hover{border-color:var(--edge);transform:translateY(-2px)}
+.prob[aria-pressed="true"]{border-color:var(--edge);background:var(--blue-soft);box-shadow:4px 4px 0 var(--edge)}
+.prob .pi{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--alt);color:var(--blue-text)}
+.fix{background:var(--surface);border:2px solid var(--edge);border-radius:24px;box-shadow:6px 6px 0 var(--edge);padding:22px;display:flex;flex-direction:column;gap:14px}
+.fix h3{font-family:var(--display);font-weight:800;font-size:22px}
+.fix-bar{height:8px;border-radius:999px;background:var(--alt);overflow:hidden}
+.fix-bar i{display:block;height:100%;width:0;background:var(--lime);transition:width .4s}
+.fix ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;counter-reset:s}
+.fix li label{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:14px;background:var(--alt);cursor:pointer;transition:background .2s}
+.fix li label:hover{background:var(--blue-soft)}
+.fix li input{flex:none;width:22px;height:22px;margin:2px 0 0;accent-color:#4f7d1a}
+.fix li input:checked + span{text-decoration:line-through;color:var(--muted)}
+.fix .ask{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding-top:6px;border-top:2px dashed var(--line)}
+.fix .ask p{flex:1 1 100%;font-weight:700}
+.solved{display:flex;gap:12px;align-items:center;background:var(--lime-soft);border-radius:16px;padding:14px;font-weight:700}
+
+/* ---------- tips ---------- */
+.tips{background:var(--alt)}
+.tip-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media (min-width:640px){.tip-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.tip-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.tip{display:flex;flex-direction:column;gap:10px;text-align:start;background:var(--surface);border:0;border-radius:24px;padding:22px;font:inherit;color:var(--ink);cursor:pointer;transition:transform .25s,box-shadow .25s}
+.tip:hover{transform:translateY(-5px);box-shadow:0 22px 40px -26px rgba(21,88,143,.55)}
+.tip .ti{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;color:#0e1c2b}
+.tip b{font-family:var(--display);font-weight:800;font-size:19px;line-height:1.35}
+.tip span{color:var(--muted);font-size:15px}
+.tip em{font-style:normal;color:var(--blue-text);font-weight:700;font-size:14px;margin-top:auto}
+.tip-body ul{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:10px}
+.tip-body li::marker{color:var(--gold)}
+.tip-body .lead{color:var(--muted);margin-bottom:14px}
+
+/* theme + language toggles */
+.tgl{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;font:inherit;font-weight:700;font-size:13px;flex:none}
+.tgl:hover{border-color:var(--edge)}
+.tgl .moon{display:none}
+:root[data-theme="dark"] .tgl .sun{display:none}
+:root[data-theme="dark"] .tgl .moon{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tgl .sun{display:none}:root:not([data-theme="light"]) .tgl .moon{display:block}}
+.gauge .track{stroke:var(--alt)}
+.gauge .num{fill:var(--ink)}
+.wave-div path{fill:var(--alt)}
+.rec .ico{color:#0e1c2b}.opt .oi{color:var(--ink)}
+</style>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+</head>
+<body>
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" aria-label="الموجة الذكية — الرئيسية"><span class="logo"></span></a>
+    <nav class="links" aria-label="الأقسام">
+      <a href="#finder">اختر باقتك</a><a href="#plans">الباقات</a><a href="#coverage">التغطية</a><a href="#help">الدعم الفني</a><a href="#tips">نصائح</a>
+    </nav>
+    <div class="nav-end">
+      <button class="tgl" type="button" id="langBtn" aria-label="English">EN</button>
+      <button class="tgl" type="button" id="themeBtn" aria-label="الوضع الليلي"><svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <button class="btn btn-blue" type="button" data-sub>اشترك</button>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="القائمة"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="menu" aria-hidden="true">
+  <div class="drawer-bg" data-close-menu></div>
+  <nav class="drawer-panel" aria-label="القائمة">
+    <div class="drawer-top"><span class="logo"></span><button class="menu-x" type="button" data-close-menu aria-label="إغلاق القائمة"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="drawer-links">
+      <a class="dl" href="#finder" style="--i:0"><span>اختر باقتك</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      <a class="dl" href="#plans" style="--i:1"><span>الباقات</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      <a class="dl" href="#coverage" style="--i:2"><span>التغطية</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      <a class="dl" href="#help" style="--i:3"><span>الدعم الفني</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      <a class="dl" href="#tips" style="--i:4"><span>نصائح</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      <a class="dl" href="#agents" style="--i:5"><span>الوكلاء</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      <a class="dl" href="#faq" style="--i:6"><span>أسئلة شائعة</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+    </div>
+    <div class="drawer-cta" style="--i:7"><button class="btn btn-blue" type="button" data-sub>اشترك الآن</button><a class="btn btn-white" href="#agents">أقرب وكيل</a></div>
+    <svg class="drawer-wave" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C 70 20 130 100 200 60 S 330 20 400 60 V120 H0Z" fill="#15588f" opacity=".12"/><path d="M0 80 C 70 45 130 115 200 80 S 330 45 400 80 V120 H0Z" fill="#91c546" opacity=".18"/></svg>
+  </nav>
+</div>
+
+<main id="top">
+  <div class="hero">
+    <canvas id="wave" aria-hidden="true"></canvas>
+    <div class="wrap copy">
+      <h1>على الموجة الذكية…<br><em class="rot" id="rot">كل شيء أسرع.</em></h1>
+      <p>سرعة تصل إلى 100 ميغابت، رفع بنفس سرعة التحميل، وبينج ثابت ومنخفض.</p>
+      <div class="cta"><a class="btn btn-blue" href="#finder">ساعدني أختار باقة</a><a class="btn btn-white" href="#coverage">هل التغطية عندي؟</a></div>
+    </div>
+  </div>
+
+  <div class="numbers">
+    <div class="wrap grid">
+      <div><strong><b data-count="100">100</b><small>ميغابت</small></strong><span>أعلى سرعة</span></div>
+      <div><strong><b data-count="300">300</b><small>غيغا</small></strong><span>في أكبر باقة</span></div>
+      <div><strong>×2</strong><span>ضعف السرعة من 3 فجرًا حتى 11 صباحًا</span></div>
+      <div><strong><b data-count="9">9</b><small>وكلاء</small></strong><span>في أحياء طرابلس</span></div>
+    </div>
+  </div>
+
+  <section class="quiz" id="finder">
+    <div class="wrap">
+      <div class="quiz-box" id="quiz">
+        <div class="quiz-top"><h2>أي باقة تناسبني؟</h2><div class="steps" aria-hidden="true"><i class="on"></i><i></i><i></i></div></div>
+        <div id="quizBody" aria-live="polite"></div>
+        <div class="quiz-nav" id="quizNav">
+          <button class="btn btn-ghost" type="button" id="qBack" hidden>→ رجوع</button>
+          <span></span>
+          <button class="btn btn-ink" type="button" id="qNext" disabled>التالي ←</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="wave-div" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24 C 240 0 480 48 720 24 S 1200 0 1440 24 V48 H0Z" /></svg>
+  <section class="plans" id="plans" style="padding-top:48px">
+    <div class="wrap">
+      <div class="head"><span class="kick">الباقات</span><h2>باقة لكل بيت.</h2><p>الأسعار بالدينار الليبي شهريًا.</p></div>
+      <div class="seg" role="tablist" aria-label="نوع الباقة">
+        <span class="thumb" aria-hidden="true"></span>
+        <button id="t-lim" role="tab" aria-selected="true" data-k="lim">باقات محدودة</button>
+        <button id="t-unl" role="tab" aria-selected="false" data-k="unl">غير محدودة</button>
+      </div>
+      <div class="plans-scroll"><div class="plan-grid" id="planGrid" role="tabpanel" aria-live="polite"></div></div>
+      <p class="swipe">اسحب لرؤية كل الباقات</p>
+    </div>
+  </section>
+  <svg class="wave-div" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1)"><path d="M0 24 C 240 0 480 48 720 24 S 1200 0 1440 24 V48 H0Z" /></svg>
+
+  <section class="coverage" id="coverage" style="padding-top:40px">
+    <div class="wrap grid">
+      <div class="scene">
+        <div class="map-tag" id="mapTag" aria-hidden="true"></div>
+        <canvas id="city" role="img" aria-label="حيّ ثلاثي الأبعاد: أبراج ترسل موجات إلى البيوت فتضيء نوافذها"></canvas>
+        <div class="legend"><span><i style="background:#15588f"></i>برج</span><span><i style="background:#cf9e46"></i>بيت متصل</span><span><i style="background:#4b525a"></i>طريق</span></div>
+      </div>
+      <div class="cov-copy">
+        <div class="head"><span class="kick">التغطية</span><h2>حيّك متصل، والشبكة تكبر.</h2><p>اختر منطقتك لتعرف هل الخدمة متوفرة عندك الآن.</p></div>
+        <form class="finder" id="covForm">
+          <label for="area">منطقتك</label>
+          <div class="row"><select id="area" class="area-select" style="flex:1;min-width:0;min-height:52px;border-radius:14px;border:2px solid var(--edge);background:var(--surface);padding:0 14px;font:inherit;font-size:16px;color:var(--ink)"></select><button class="btn btn-blue" type="submit">افحص</button></div>
+        </form>
+        <div class="result" id="result" role="status"></div>
+        <div class="cov-legend" id="covChips" aria-label="مناطق سريعة"></div>
+        <p class="example">حالة المناطق هنا مثال توضيحي، تُحدَّث من الشركة قبل النشر.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="head"><span class="kick">لماذا الموجة</span><h2>مصمّمة لطريقة استخدامك.</h2></div>
+      <div class="tiles">
+        <div class="tile" data-rise>
+          <h3>سرعة تُحسّ بها</h3><p>سرعات تصل إلى 100 ميغابت.</p>
+          <div class="vis"><svg class="gauge" viewBox="0 0 200 116" role="img" aria-label="مؤشر سرعة حتى 100 ميغابت">
+            <path class="track" d="M20 106 A80 80 0 0 1 180 106" fill="none" stroke-width="16" stroke-linecap="round"/>
+            <path id="gArc" d="M20 106 A80 80 0 0 1 180 106" fill="none" stroke="#1d6aa9" stroke-width="16" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="0"/>
+            <text class="num" x="100" y="98" text-anchor="middle" font-size="36" font-weight="800" id="gNum">100</text>
+          </svg></div>
+        </div>
+        <div class="tile" data-rise>
+          <h3>ضعف السرعة صباحًا</h3><p>من 3 فجرًا حتى 11 صباحًا في معظم الباقات.</p>
+          <div class="vis"><div class="day" aria-hidden="true"><div class="boost">×2</div><div class="now" id="now"></div></div>
+          <div class="ticks" aria-hidden="true"><span>12ص</span><span>6ص</span><span>12ظ</span><span>6م</span><span>12ص</span></div></div>
+        </div>
+        <div class="tile" data-rise>
+          <h3>بينج ثابت ومنخفض</h3><p>استجابة سريعة بلا تقطيع في الألعاب ومكالمات الفيديو.</p>
+          <div class="vis"><div class="ping" aria-hidden="true"><span class="band"></span><b>بينج</b>
+            <svg viewBox="0 0 400 84" preserveAspectRatio="none"><polyline fill="none" stroke="#91c546" stroke-width="3" stroke-linejoin="round" points="0,62 20,60 40,63 60,61 80,62 100,60 120,62 140,61 160,63 180,60 200,62 220,60 240,63 260,61 280,62 300,60 320,62 340,61 360,63 380,60 400,62"/></svg></div></div>
+        </div>
+        <div class="tile" data-rise>
+          <h3>رفع بنفس سرعة التحميل</h3><p>في كل باقاتنا، سرعة الرفع تساوي سرعة التحميل.</p>
+          <div class="vis"><div class="ud" aria-hidden="true"><div><span>↓ تحميل</span><i></i></div><div><span>↑ رفع</span><i></i></div></div></div>
+        </div>
+        <div class="tile" data-rise>
+          <h3>لعب بلا لاق</h3><p>Smart Gamer: ‏170 غيغا بسرعة 12 ميغابت.</p>
+          <div class="vis"><div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+        </div>
+        <div class="tile" data-rise>
+          <h3>جيجاتك لا تضيع</h3><p>ترحيل الغيغات المتبقية للشهر التالي في باقات مختارة.</p>
+          <div class="vis"><div class="roll" aria-hidden="true"><div><b>12</b><span>متبقية</span></div>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4f7d1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            <div><b>+12</b><span>الشهر القادم</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agents">
+    <div class="wrap">
+      <div class="head"><span class="kick">الوكلاء</span><h2>وكيلنا قريب منك.</h2><p>اشترك أو اشحن رصيدك من أقرب محل.</p></div>
+      <div class="agent-search"><label for="q">ابحث باسم الحي أو المحل</label><input id="q" type="search" placeholder="مثال: حي الزهور" autocomplete="off"></div>
+      <div class="agents" id="agentList"></div>
+    </div>
+  </section>
+
+  <section id="help">
+    <div class="wrap">
+      <div class="head"><span class="kick">الدعم الفني</span><h2>عندك مشكلة؟ نحلّها معًا.</h2><p>اختر المشكلة واتبع الخطوات. أغلب المشاكل تنحل في دقيقتين.</p></div>
+      <div class="help-box">
+        <div class="problems" id="problems" role="group" aria-label="نوع المشكلة"></div>
+        <div class="fix" id="fix" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tips" id="tips">
+    <div class="wrap">
+      <div class="head"><span class="kick">نصائح</span><h2>استفد من إنترنتك أكثر.</h2></div>
+      <div class="tip-grid" id="tipGrid"></div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="head"><span class="kick">أسئلة شائعة</span><h2>عندك سؤال؟</h2></div>
+      <div class="faq-list">
+        <details><summary><span>ما معنى «وقت خارج الذروة»؟</span></summary><div class="ans"><p>هو الوقت من 3 فجرًا حتى 11 صباحًا، يقلّ فيه الضغط على الشبكة، فتتضاعف سرعتك في معظم الباقات. في Smart X1 يكون التحميل مجانيًا من 3 فجرًا حتى 9 صباحًا.</p></div></details>
+        <details><summary><span>كيف يعمل ترحيل الجيجات؟</span></summary><div class="ans"><p>في باقات Smart Normal وMedium وExtra وX1، ما يتبقى من غيغات في نهاية الشهر يُضاف إلى الشهر التالي عند التجديد.</p></div></details>
+        <details><summary><span>هل سرعة الرفع مثل سرعة التحميل؟</span></summary><div class="ans"><p>نعم، في كل باقاتنا سرعة الرفع تساوي سرعة التحميل. هذا مهم لمكالمات الفيديو والبث المباشر ورفع الملفات والصور.</p></div></details>
+        <details><summary><span>ما هو البينج ولماذا يهمّ؟</span></summary><div class="ans"><p>البينج هو الوقت الذي تحتاجه الإشارة لتذهب وتعود. كلما كان منخفضًا وثابتًا كانت الألعاب ومكالمات الفيديو أسرع استجابة وبلا تقطيع.</p></div></details>
+        <details><summary><span>ما الفرق بين المحدودة وغير المحدودة؟</span></summary><div class="ans"><p>المحدودة تعطيك حصة غيغات بسرعة أعلى، وغير المحدودة تعطيك استخدامًا بلا حدود بسرعة ثابتة تبدأ من 3 ميغابت.</p></div></details>
+        <details><summary><span>كيف أشترك أو أشحن رصيدي؟</span></summary><div class="ans"><p>من أي وكيل في القائمة أعلاه، أو من منظومة الرصيد إن كان لديك حساب.</p></div></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div><span class="logo" role="img" aria-label="الموجة الذكية"></span><p style="margin-top:10px;max-width:32ch">سرعة وثبات لبيتك وعملك، مع فريق دعم قريب منك.</p></div>
+      <nav aria-label="روابط"><h4>الموقع</h4><a href="#plans">الباقات</a><a href="#coverage">التغطية</a><a href="#agents">الوكلاء</a><a href="#faq">أسئلة شائعة</a></nav>
+      <nav aria-label="تواصل"><h4>تواصل</h4><span>[رقم خدمة العملاء]</span><span>[البريد الإلكتروني]</span><span>[رابط فيسبوك]</span></nav>
+    </div>
+    <div class="bottom">© الموجة الذكية للحلول الرقمية</div>
+  </div>
+</footer>
+
+<div class="dock" id="dock"><button class="btn btn-blue" type="button" data-sub>اشترك الآن</button><a class="btn btn-white" href="#agents">أقرب وكيل</a></div>
+
+<div class="cmp-bar" id="cmpBar" role="region" aria-label="المقارنة"><span id="cmpCount">باقتان للمقارنة</span><button class="btn" type="button" id="cmpOpen">قارن الآن</button><button class="x" type="button" id="cmpClear" aria-label="إلغاء المقارنة">إلغاء</button></div>
+
+<dialog id="subDlg" aria-labelledby="subTitle">
+  <div class="dlg-head"><div><div class="step-label" id="subStep">الخطوة 1 من 4</div><h2 id="subTitle">طلب اشتراك</h2></div><button class="close" type="button" data-close aria-label="إغلاق"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="progress" aria-hidden="true"><i id="subProg"></i></div>
+  <form class="dlg-body" id="subForm" novalidate>
+    <div class="fstep" data-step="1">
+      <h3>اختر الباقة</h3>
+      <div class="plan-pick" id="planPick" role="group" aria-label="الباقات"></div>
+    </div>
+    <div class="fstep" data-step="2" hidden>
+      <h3>أين تسكن؟</h3>
+      <div class="field"><label for="fArea">المنطقة</label><select id="fArea"></select></div>
+      <div id="fAreaNote"></div>
+      <div class="field"><label for="fLand">أقرب معلم (اختياري)</label><input id="fLand" type="text" placeholder="مثال: قرب جامع حمزة" autocomplete="off"></div>
+    </div>
+    <div class="fstep" data-step="3" hidden>
+      <h3>بياناتك</h3>
+      <div class="field"><label for="fName">الاسم</label><input id="fName" type="text" autocomplete="name" placeholder="الاسم الكامل"><span class="err" id="eName"></span></div>
+      <div class="field"><label for="fPhone">رقم الهاتف</label><input id="fPhone" type="tel" inputmode="tel" dir="ltr" style="text-align:right" autocomplete="tel" placeholder="09XXXXXXXX"><span class="err" id="ePhone"></span></div>
+    </div>
+    <div class="fstep" data-step="4" hidden>
+      <h3>متى يناسبك التركيب؟</h3>
+      <div class="field"><label>اليوم</label><div class="chips" id="fDay" role="group" aria-label="اليوم"><button type="button" aria-pressed="true">غدًا</button><button type="button" aria-pressed="false">بعد غد</button><button type="button" aria-pressed="false">خلال الأسبوع</button></div></div>
+      <div class="field"><label>الوقت</label><div class="chips" id="fTime" role="group" aria-label="الوقت"><button type="button" aria-pressed="true">صباحًا</button><button type="button" aria-pressed="false">ظهرًا</button><button type="button" aria-pressed="false">مساءً</button></div></div>
+    </div>
+    <div class="fstep" data-step="5" hidden>
+      <h3>راجع طلبك</h3>
+      <div class="review" id="review"></div>
+      <p class="note-box ok">اضغط «أرسل عبر واتساب» ليصل طلبك جاهزًا، وسيتواصل معك فريقنا لتأكيد الموعد.</p>
+    </div>
+    <div class="form-nav">
+      <button class="btn btn-ghost" type="button" id="fBack">→ رجوع</button>
+      <button class="btn btn-ink" type="button" id="fNext">التالي ←</button>
+      <a class="btn btn-wa" id="fSend" href="#" target="_blank" rel="noopener" hidden>أرسل عبر واتساب</a>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="tipDlg" aria-labelledby="tipTitle">
+  <div class="dlg-head"><h2 id="tipTitle"></h2><button class="close" type="button" data-close aria-label="إغلاق"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="dlg-body tip-body" id="tipBody"></div>
+</dialog>
+
+<dialog id="cmpDlg" aria-labelledby="cmpTitle">
+  <div class="dlg-head"><h2 id="cmpTitle">مقارنة الباقات</h2><button class="close" type="button" data-close aria-label="إغلاق"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="dlg-body"><div class="cmp-scroll"><table class="cmp-table" id="cmpTable"></table></div><p class="example">الخانة الخضراء هي الأفضل في كل صف.</p></div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var T = function (ar) { return ar; };
+  var cityGo = function () {}, pendingArea = null;
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  /* ---------- header, menu, dock ---------- */
+  var hdr = document.getElementById('hdr'), dock = document.getElementById('dock');
+  function onScroll() { var y = scrollY; hdr.classList.toggle('scrolled', y > 8); dock.classList.toggle('show', y > 500); }
+  addEventListener('scroll', onScroll, {passive: true}); onScroll();
+  var mb = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  function setMenu(open) {
+    menu.classList.toggle('open', open); menu.setAttribute('aria-hidden', !open); mb.setAttribute('aria-expanded', open);
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    if (open) setTimeout(function () { menu.querySelector('.menu-x').focus(); }, 350); else mb.focus({preventScroll: true});
+  }
+  mb.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('[data-close-menu]') || e.target.closest('a') || e.target.closest('[data-sub]')) setMenu(false);
+  });
+  addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('open')) setMenu(false); });
+
+  /* ---------- plans (from smartwave.ly) ---------- */
+  var I = {
+    home: '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+    bolt: '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+    game: '<path d="M6 11h4M8 9v4"/><circle cx="15" cy="12" r=".8"/><circle cx="18" cy="10" r=".8"/><path d="M17.3 5H6.7a4 4 0 0 0-4 3.6L2 15a3 3 0 0 0 5.2 2.1L9 15h6l1.8 2.1A3 3 0 0 0 22 15l-.7-6.4A4 4 0 0 0 17.3 5z"/>',
+    inf: '<path d="M18.2 8.5a4 4 0 1 1 0 7c-2.2 0-3.9-2-6.2-3.5C9.7 10.5 8 8.5 5.8 8.5a4 4 0 1 0 0 7c2.2 0 3.9-2 6.2-3.5 2.3-1.5 4-3.5 6.2-3.5z"/>',
+    biz: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/>'
+  };
+  var TINT = {home: 'var(--tint-blue)', bolt: 'var(--tint-gold)', game: '#91c546', inf: 'var(--tint-blue)', biz: 'var(--tint-gold)'};
+  var night = 'ضعف السرعة من 3 فجرًا حتى 11 صباحًا';
+  var PLANS = {
+    lim: [
+      {n:'Smart Normal',i:'home',s:6,q:'25 غيغا',p:25,f:[night,'ترحيل الغيغات']},
+      {n:'Smart Medium',i:'home',s:6,q:'35 غيغا',p:35,f:[night,'ترحيل الغيغات']},
+      {n:'Smart Extra',i:'bolt',s:8,q:'65 غيغا',p:55,f:[night,'ترحيل الغيغات']},
+      {n:'Smart Family',i:'home',s:8,q:'99 غيغا',p:55,f:['وقت خارج الذروة من 3 فجرًا حتى 11 صباحًا']},
+      {n:'Smart Gamer',i:'game',s:12,q:'170 غيغا',p:75,f:['مصممة للّعب أونلاين','بينج ثابت ومنخفض','وقت خارج الذروة من 3 فجرًا حتى 11 صباحًا'],hot:1},
+      {n:'Smart X1',i:'bolt',s:12,q:'125 غيغا',p:90,f:['تحميل مجاني من 3 فجرًا حتى 9 صباحًا','ترحيل الغيغات']},
+      {n:'Smart Extra X2',i:'bolt',s:16,q:'300 غيغا',p:140,f:['تحميل مجاني خارج وقت الذروة']}
+    ],
+    unl: [
+      {n:'Unlimit X1',i:'inf',s:3,q:'بلا حدود',p:40,f:['وقت خارج الذروة من 3 فجرًا حتى 11 صباحًا']},
+      {n:'Unlimit X2',i:'inf',s:4.5,q:'بلا حدود',p:55,f:[night]},
+      {n:'Unlimit X3',i:'inf',s:6,q:'بلا حدود',p:70,f:[night],hot:1},
+      {n:'Unlimit Extra',i:'inf',s:10,q:'بلا حدود',p:100,f:[night]},
+      {n:'Unlimit Business',i:'biz',s:16,q:'بلا حدود',p:160,f:[night,'مناسبة للمكاتب والمحلات']}
+    ]
+  };
+  var tick = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f7d1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>';
+  var grid = document.getElementById('planGrid'), cmpSel = [];
+  function renderPlans(k, animate) {
+    grid.innerHTML = PLANS[k].map(function (p) {
+      return '<article class="card' + (p.hot ? ' hot' : '') + '">' +
+        (p.hot ? '<span class="badge">الأكثر طلبًا</span>' : '') +
+        '<span class="ico" style="background:' + TINT[p.i] + ';color:' + (p.i === 'game' ? '#0e1c2b' : 'var(--ink)') + '"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + I[p.i] + '</svg></span>' +
+        '<h3>' + esc(p.n) + '</h3>' +
+        '<div class="spd"><b>' + p.s + '</b><span>ميغابت · ' + esc(p.q) + '</span></div>' +
+        '<div class="meter" aria-hidden="true"><i data-v="' + (p.s / 16) + '"></i></div>' +
+        '<div class="ud2"><span>↓ تحميل ' + p.s + ' ميغابت</span><span>↑ رفع ' + p.s + ' ميغابت</span></div>' +
+        '<ul>' + p.f.map(function (f) { return '<li>' + tick + '<span>' + esc(f) + '</span></li>'; }).join('') + '</ul>' +
+        '<label class="cmp"><input type="checkbox" data-cmp="' + esc(p.n) + '"' + (cmpSel.indexOf(p.n) > -1 ? ' checked' : '') + '> أضف للمقارنة</label>' +
+        '<div class="foot"><span class="price">' + p.p + ' <small>د.ل/شهر</small></span><button class="btn" type="button" data-sub="' + esc(p.n) + '">اشترك</button></div></article>';
+    }).join('');
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      grid.querySelectorAll('.meter i').forEach(function (i) { i.style.transform = 'scaleX(' + i.dataset.v + ')'; });
+    }); });
+    grid.parentElement.scrollLeft = 0;
+    if (animate && window.gsap && !reduce) gsap.fromTo(grid.children, {y: 24}, {y: 0, duration: .5, stagger: .05, ease: 'back.out(1.7)'});
+  }
+  var segBtns = document.querySelectorAll('.seg button'), thumb = document.querySelector('.seg .thumb');
+  function moveThumb() { var b = document.querySelector('.seg [aria-selected="true"]'); thumb.style.width = b.offsetWidth + 'px'; thumb.style.left = b.offsetLeft + 'px'; }
+  segBtns.forEach(function (b) { b.addEventListener('click', function () {
+    segBtns.forEach(function (x) { x.setAttribute('aria-selected', x === b); }); moveThumb(); renderPlans(b.dataset.k, true);
+  }); });
+  addEventListener('resize', moveThumb);
+  renderPlans('lim'); moveThumb();
+  if (document.fonts) document.fonts.ready.then(moveThumb);
+
+  /* ---------- agents ---------- */
+  var AGENTS = [
+    ['محلات أبناء التقازي','السائح — مقابل مصنع الحديد والصلب','0918400582'],
+    ['محلات أبناء العربي','داخل شيل بير العالم الأول','0910030088'],
+    ['المبدع للحلول التقنية','خلة بن عون — خلف شيل الخنورة','0943339798'],
+    ['مركز زيد للهاتف المحمول','عين زارة — شيل الجبو','0915972430'],
+    ['المتميز للإلكترونيات','قبل كوبري سوق الأحد','0913093973'],
+    ['الأيقونة','قبل كوبري حي دمشق — مقابل باني للحوم','0922955320'],
+    ['الريادة للفضائيات','المشروع الهضبة — جوار جامع حمزة','0910372886'],
+    ['الضاوي سات','حي الزهور — صلاح الدين، مقابل المعسكر',''],
+    ['حمزاوي','حي الزهور — جنب سوق المزرعة','']
+  ];
+  var pin = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+  var call = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>';
+  function agentHTML(a) {
+    return '<div class="agent"><span class="pin">' + pin + '</span><div><b>' + esc(a[0]) + '</b><span>' + esc(a[1]) + '</span></div>' +
+      (a[2] ? '<a href="tel:' + a[2] + '" aria-label="اتصل بـ ' + esc(a[0]) + '">' + call + '</a>' : '<span class="off" title="الرقم غير متوفر" aria-label="رقم ' + esc(a[0]) + ' غير متوفر">' + call + '</span>') + '</div>';
+  }
+  function match(q) { q = (q || '').trim(); return AGENTS.filter(function (a) { return !q || a[0].indexOf(q) > -1 || a[1].indexOf(q) > -1; }); }
+  var list = document.getElementById('agentList');
+  function renderAgents(q) { var r = match(q); list.innerHTML = r.length ? r.map(agentHTML).join('') : '<p class="empty">لا يوجد وكيل بهذا الاسم. جرّب اسم حيّ قريب.</p>'; }
+  renderAgents(''); document.getElementById('q').addEventListener('input', function (e) { renderAgents(e.target.value); });
+
+
+  /* ================= shared data ================= */
+  var ALL = PLANS.lim.concat(PLANS.unl);
+  function plan(n) { return ALL.filter(function (p) { return p.n === n; })[0]; }
+  // ponytail: example coverage states; replace with the company's real list before launch
+  var AREAS = [
+    ['السائح','on'],['عين زارة','on'],['حي الزهور','on'],['المشروع الهضبة','on'],['خلة بن عون','on'],['سوق الأحد','on'],['حي دمشق','on'],['بير العالم','on'],
+    ['سوق الجمعة','soon'],['الفرناج','soon'],['تاجوراء','soon'],
+    ['جنزور','off'],['قرقارش','off'],['بن عاشور','off']
+  ];
+  var ST = {on: ['متوفرة الآن', '#91c546'], soon: ['قريبًا', '#cf9e46'], off: ['غير متوفرة بعد', '#c8d1da']};
+  function areaState(n) { var a = AREAS.filter(function (x) { return x[0] === n; })[0]; return a ? a[1] : 'off'; }
+  var WA_NUMBER = ''; // ponytail: company WhatsApp number (e.g. 2189XXXXXXXX); empty lets the visitor pick the chat
+  function waLink(text) { return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text); }
+  function statusChip(k) { return '<span class="status"><i style="background:' + ST[k][1] + '"></i>' + ST[k][0] + '</span>'; }
+
+  /* ================= 1 · plan finder ================= */
+  var Q = [
+    {t: 'كم شخص يستخدم الإنترنت في البيت؟', k: 'ppl', o: [['شخص أو اثنان', 'قليل', 'home'], ['من 3 إلى 5', 'عائلة', 'home'], ['6 أو أكثر', 'بيت كبير', 'home']]},
+    {t: 'ماذا تستخدمون أكثر؟', k: 'use', o: [['تصفح وسوشيال', 'browse', 'bolt'], ['أفلام ويوتيوب', 'movies', 'inf'], ['ألعاب أونلاين', 'games', 'game'], ['عمل ومكتب', 'work', 'biz']]},
+    {t: 'كم ميزانيتك الشهرية؟', k: 'bud', o: [['أقل من 45 د.ل', 'low', 'home'], ['بين 45 و90 د.ل', 'mid', 'bolt'], ['أكثر من 90 د.ل', 'high', 'inf']]}
+  ];
+  var ans = {}, qi = 0;
+  var qBody = document.getElementById('quizBody'), qNext = document.getElementById('qNext'), qBack = document.getElementById('qBack'), qNav = document.getElementById('quizNav');
+  var dots = document.querySelectorAll('#quiz .steps i');
+  function icon(k, size) { return '<svg width="' + (size || 22) + '" height="' + (size || 22) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + I[k] + '</svg>'; }
+  function recommend(a) {
+    var big = a.ppl === '6 أو أكثر', mid = a.ppl === 'من 3 إلى 5';
+    if (a.use === 'games') return a.bud === 'high' ? ['Smart Extra X2', 'أعلى سرعة وحصة كبيرة للّعب والتحميل معًا.'] : ['Smart Gamer', 'مصممة للّعب أونلاين بسرعة 12 ميغابت وحصة 170 غيغا.'];
+    if (a.use === 'work') return a.bud === 'high' ? ['Unlimit Business', 'بلا حدود وبأعلى سرعة، مناسبة للعمل طوال اليوم.'] : ['Unlimit X3', 'بلا حدود، فلا تقلق من نفاد الغيغات أثناء العمل.'];
+    if (a.use === 'movies') {
+      if (a.bud === 'low') return ['Unlimit X1', 'بلا حدود بأقل سعر، مناسبة للمشاهدة بجودة عادية.'];
+      if (a.bud === 'mid') return [big ? 'Unlimit X3' : 'Unlimit X2', 'المشاهدة تستهلك الكثير، والباقة غير المحدودة تريحك من الحساب.'];
+      return ['Unlimit Extra', 'بلا حدود وبسرعة 10 ميغابت، تكفي عدة شاشات معًا.'];
+    }
+    if (a.bud === 'low') return big || mid ? ['Unlimit X1', 'بلا حدود بسعر قليل لعدد أكبر من الأشخاص.'] : ['Smart Normal', 'تكفي التصفح والسوشيال لشخص أو اثنين.'];
+    if (a.bud === 'mid') return big ? ['Unlimit X2', 'بلا حدود لعائلة كبيرة بسعر متوسط.'] : mid ? ['Smart Family', 'حصة 99 غيغا تكفي العائلة شهرًا كاملًا.'] : ['Smart Medium', 'حصة مريحة للتصفح مع ترحيل الغيغات.'];
+    return ['Smart X1', 'سرعة 12 ميغابت مع تحميل مجاني صباحًا وترحيل الغيغات.'];
+  }
+  function drawQuiz() {
+    dots.forEach(function (d, i) { d.classList.toggle('on', i <= Math.min(qi, 2)); });
+    if (qi < Q.length) {
+      var q = Q[qi];
+      qBody.innerHTML = '<p class="q-title">' + q.t + '</p><div class="opts">' + q.o.map(function (o) {
+        var val = q.k === 'ppl' ? o[0] : o[1];
+        return '<button class="opt" type="button" data-v="' + val + '" aria-pressed="' + (ans[q.k] === val) + '"><span class="oi">' + icon(o[2]) + '</span>' + o[0] + '</button>';
+      }).join('') + '</div>';
+      qNav.hidden = false; qBack.hidden = qi === 0; qNext.disabled = !ans[q.k];
+      qNext.textContent = qi === Q.length - 1 ? 'اعرض الباقة المناسبة' : 'التالي ←';
+      qBody.querySelectorAll('.opt').forEach(function (b) { b.addEventListener('click', function () {
+        ans[q.k] = b.dataset.v;
+        qBody.querySelectorAll('.opt').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+        qNext.disabled = false;
+        if (qi < Q.length - 1) setTimeout(function () { qi++; drawQuiz(); }, 260);
+      }); });
+    } else {
+      var r = recommend(ans), p = plan(r[0]);
+      qBody.innerHTML = '<div class="rec"><span class="ico">' + icon(p.i, 30) + '</span><div><small>الباقة المناسبة لك</small><h3>' + esc(p.n) + '</h3><p>' + esc(r[1]) + '</p>' +
+        '<div class="facts"><span>↓↑ ' + p.s + ' ميغابت</span><span>' + esc(p.q) + '</span><span>' + p.p + ' د.ل/شهر</span></div></div>' +
+        '<div class="rec-actions"><button class="btn btn-blue" type="button" data-sub="' + esc(p.n) + '">اشترك في هذه الباقة</button><button class="btn btn-white" type="button" id="qAgain">أعد الأسئلة</button></div></div>';
+      qNav.hidden = true;
+      document.getElementById('qAgain').addEventListener('click', function () { ans = {}; qi = 0; drawQuiz(); });
+      if (window.gsap && !reduce) gsap.fromTo(qBody.firstChild, {y: 20, scale: .97}, {y: 0, scale: 1, duration: .5, ease: 'back.out(1.8)'});
+    }
+  }
+  qNext.addEventListener('click', function () { if (ans[Q[qi].k]) { qi++; drawQuiz(); } });
+  qBack.addEventListener('click', function () { if (qi > 0) { qi--; drawQuiz(); } });
+  drawQuiz();
+
+  /* ================= 2 · subscribe form ================= */
+  var dlg = document.getElementById('subDlg'), step = 1, form = {plan: 'Smart Gamer', area: AREAS[0][0], day: 'غدًا', time: 'صباحًا'};
+  var fBack = document.getElementById('fBack'), fNext = document.getElementById('fNext'), fSend = document.getElementById('fSend');
+  var fArea = document.getElementById('fArea'), areaOpts = AREAS.map(function (a) { return '<option value="' + a[0] + '">' + a[0] + ' — ' + ST[a[1]][0] + '</option>'; }).join('');
+  fArea.innerHTML = areaOpts;
+  document.getElementById('planPick').innerHTML = ALL.map(function (p) {
+    return '<button type="button" data-p="' + esc(p.n) + '" aria-pressed="false"><b>' + esc(p.n) + '</b><span>' + p.s + ' ميغابت · ' + esc(p.q) + ' · ' + p.p + ' د.ل</span></button>';
+  }).join('');
+  document.querySelectorAll('#planPick button').forEach(function (b) { b.addEventListener('click', function () { form.plan = b.dataset.p; syncPick(); }); });
+  function syncPick() { document.querySelectorAll('#planPick button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.p === form.plan); }); }
+  function chipGroup(id, key) {
+    var g = document.getElementById(id);
+    g.querySelectorAll('button').forEach(function (b) { b.addEventListener('click', function () {
+      form[key] = b.textContent; g.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+    }); });
+  }
+  chipGroup('fDay', 'day'); chipGroup('fTime', 'time');
+  function areaNote() {
+    var k = areaState(fArea.value), el = document.getElementById('fAreaNote');
+    el.innerHTML = k === 'on' ? '<p class="note-box ok">الخدمة متوفرة في ' + esc(fArea.value) + '.</p>'
+      : '<p class="note-box warn">الخدمة ' + (k === 'soon' ? 'تصل قريبًا إلى ' : 'لم تصل بعد إلى ') + esc(fArea.value) + '. أرسل الطلب وسنبلغك فور توفرها.</p>';
+  }
+  fArea.addEventListener('change', areaNote);
+  var PHONE = /^(\+?218|0)?9[1-5]\d{7}$/;
+  function valid() {
+    if (step !== 3) return true;
+    var n = document.getElementById('fName').value.trim(), ph = document.getElementById('fPhone').value.replace(/[\s-]/g, ''), ok = true;
+    document.getElementById('eName').textContent = n.length < 3 ? 'اكتب اسمك الكامل.' : '';
+    document.getElementById('ePhone').textContent = PHONE.test(ph) ? '' : 'اكتب رقمًا ليبيًا صحيحًا يبدأ بـ 091 أو 092 أو 094 مثلًا.';
+    if (n.length < 3 || !PHONE.test(ph)) ok = false;
+    if (ok) { form.name = n; form.phone = ph; }
+    return ok;
+  }
+  function drawStep() {
+    document.querySelectorAll('#subForm .fstep').forEach(function (f) { f.hidden = +f.dataset.step !== step; });
+    document.getElementById('subStep').textContent = step < 5 ? 'الخطوة ' + step + ' من 4' : 'جاهز للإرسال';
+    document.getElementById('subProg').style.width = (Math.min(step, 4) / 4 * 100) + '%';
+    fBack.style.visibility = step === 1 ? 'hidden' : 'visible';
+    fNext.hidden = step === 5; fSend.hidden = step !== 5;
+    if (step === 2) { fArea.value = form.area; areaNote(); }
+    if (step === 5) {
+      form.area = fArea.value; form.land = document.getElementById('fLand').value.trim();
+      var p = plan(form.plan);
+      var rows = [['الباقة', p.n + ' · ' + p.p + ' د.ل'], ['المنطقة', form.area + (form.land ? ' — ' + form.land : '')], ['الاسم', form.name], ['الهاتف', form.phone], ['موعد التركيب', form.day + '، ' + form.time]];
+      document.getElementById('review').innerHTML = rows.map(function (r) { return '<div><span>' + r[0] + '</span><b>' + esc(r[1]) + '</b></div>'; }).join('');
+      fSend.href = waLink('طلب اشتراك جديد — الموجة الذكية\n' + rows.map(function (r) { return r[0] + ': ' + r[1]; }).join('\n'));
+    }
+    var first = dlg.querySelector('.fstep:not([hidden]) button, .fstep:not([hidden]) input, .fstep:not([hidden]) select');
+    if (first && step > 1) first.focus();
+  }
+  fNext.addEventListener('click', function () { if (step === 2) form.area = fArea.value; if (!valid()) return; step++; drawStep(); });
+  fBack.addEventListener('click', function () { if (step > 1) { step--; drawStep(); } });
+  function openSub(planName, areaName) {
+    if (planName && plan(planName)) form.plan = planName;
+    if (areaName) form.area = areaName;
+    step = 1; syncPick(); drawStep();
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-sub]'); if (t) { e.preventDefault(); openSub(t.dataset.sub || null, t.dataset.area || null); }
+    var c = e.target.closest('[data-close]'); if (c) c.closest('dialog').close();
+  });
+  document.querySelectorAll('dialog').forEach(function (d) {
+    d.addEventListener('click', function (e) { if (e.target === d) d.close(); });   // tap on backdrop closes
+  });
+
+  /* ================= 3 · coverage checker ================= */
+  var covSel = document.getElementById('area'), out = document.getElementById('result');
+  covSel.innerHTML = AREAS.map(function (a) { return '<option value="' + a[0] + '">' + a[0] + '</option>'; }).join('');
+  document.getElementById('covChips').innerHTML = AREAS.slice(0, 8).concat(AREAS.slice(8, 10), AREAS.slice(11, 12)).map(function (a) {
+    return '<button class="area-chip" type="button" data-a="' + a[0] + '"><i style="background:' + ST[a[1]][1] + '"></i>' + a[0] + '</button>';
+  }).join('');
+  var mapTag = document.getElementById('mapTag');
+  function check(name) {
+    var k = areaState(name), html;
+    pendingArea = [name, k];
+    mapTag.innerHTML = '<i style="background:' + ST[k][1] + '"></i><span>' + esc(name) + '</span><small>' + ST[k][0] + '</small>';
+    if (window.gsap && !reduce) gsap.fromTo(mapTag, {y: -16, scale: .9}, {y: 0, scale: 1, duration: .6, delay: .9, ease: 'back.out(2)'});
+    cityGo(name, k);
+    if (k === 'on') html = '<div class="cov-result">' + statusChip('on') + '<h3>الموجة تصل إلى ' + esc(name) + '!</h3><p>يمكنك الاشتراك الآن، وسنحدد معك موعد التركيب.</p><div class="acts"><button class="btn btn-blue" type="button" data-sub data-area="' + esc(name) + '">اطلب الاشتراك</button><a class="btn btn-white" href="#finder">ساعدني أختار باقة</a></div></div>';
+    else html = '<div class="cov-result">' + statusChip(k) + '<h3>' + (k === 'soon' ? 'نعمل على الوصول إلى ' : 'لم نصل بعد إلى ') + esc(name) + '.</h3><p>اترك رقمك وسنبلغك أول ما تتوفر الخدمة في منطقتك.</p><div class="acts"><a class="btn btn-wa" target="_blank" rel="noopener" href="' + waLink('أبلغوني عند وصول خدمة الموجة الذكية إلى: ' + name) + '">أبلغني عبر واتساب</a></div></div>';
+    out.innerHTML = html;
+    if (window.gsap && !reduce) gsap.fromTo(out.firstChild, {y: 14, scale: .98}, {y: 0, scale: 1, duration: .45, ease: 'back.out(1.8)'});
+  }
+  document.getElementById('covForm').addEventListener('submit', function (e) { e.preventDefault(); check(covSel.value); });
+  document.getElementById('covChips').addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (b) { covSel.value = b.dataset.a; check(b.dataset.a); } });
+  check('المشروع الهضبة');
+
+  /* ================= 4 · compare ================= */
+  var bar = document.getElementById('cmpBar'), cmpDlg = document.getElementById('cmpDlg');
+  function syncBar() {
+    bar.classList.toggle('show', cmpSel.length > 0);
+    document.getElementById('cmpCount').textContent = cmpSel.length === 1 ? 'اختر باقة أخرى للمقارنة' : cmpSel.length + ' باقات للمقارنة';
+    document.getElementById('cmpOpen').disabled = cmpSel.length < 2;
+    document.getElementById('cmpOpen').style.opacity = cmpSel.length < 2 ? .5 : 1;
+  }
+  grid.addEventListener('change', function (e) {
+    var cb = e.target.closest('[data-cmp]'); if (!cb) return;
+    var n = cb.dataset.cmp;
+    if (cb.checked) { if (cmpSel.length >= 3) { cb.checked = false; document.getElementById('cmpCount').textContent = 'ثلاث باقات كحد أقصى'; return; } cmpSel.push(n); }
+    else cmpSel = cmpSel.filter(function (x) { return x !== n; });
+    syncBar();
+  });
+  document.getElementById('cmpClear').addEventListener('click', function () { cmpSel = []; grid.querySelectorAll('[data-cmp]').forEach(function (c) { c.checked = false; }); syncBar(); });
+  document.getElementById('cmpOpen').addEventListener('click', function () {
+    if (cmpSel.length < 2) return;
+    var ps = cmpSel.map(plan);
+    function gb(p) { var m = /(\d+)/.exec(p.q); return m ? +m[1] : Infinity; }
+    function perGb(p) { var g = gb(p); return g === Infinity ? null : p.p / g; }
+    function bestIdx(vals, higher) {
+      var best = -1, bv = null;
+      vals.forEach(function (v, i) { if (v === null) return; if (bv === null || (higher ? v > bv : v < bv)) { bv = v; best = i; } });
+      return best;
+    }
+    var rows = [
+      ['السرعة', ps.map(function (p) { return p.s; }), true, function (p) { return p.s + ' ميغابت'; }],
+      ['سرعة الرفع', ps.map(function (p) { return p.s; }), true, function (p) { return p.s + ' ميغابت'; }],
+      ['الحصة', ps.map(gb), true, function (p) { return p.q; }],
+      ['السعر الشهري', ps.map(function (p) { return p.p; }), false, function (p) { return p.p + ' د.ل'; }],
+      ['سعر الغيغا', ps.map(perGb), false, function (p) { var v = perGb(p); return v === null ? '—' : v.toFixed(2) + ' د.ل'; }]
+    ];
+    var h = '<thead><tr><th></th>' + ps.map(function (p) { return '<th>' + esc(p.n) + '</th>'; }).join('') + '</tr></thead><tbody>';
+    rows.forEach(function (r) {
+      var b = bestIdx(r[1], r[2]);
+      h += '<tr><td>' + r[0] + '</td>' + ps.map(function (p, i) { return '<td' + (i === b ? ' class="best"' : '') + '>' + esc(r[3](p)) + '</td>'; }).join('') + '</tr>';
+    });
+    h += '<tr><td>المزايا</td>' + ps.map(function (p) { return '<td style="font-size:13px">' + p.f.map(esc).join('<br>') + '</td>'; }).join('') + '</tr>';
+    h += '<tr><td></td>' + ps.map(function (p) { return '<td><button class="btn" type="button" data-sub="' + esc(p.n) + '">اشترك</button></td>'; }).join('') + '</tr></tbody>';
+    document.getElementById('cmpTable').innerHTML = h;
+    cmpDlg.showModal ? cmpDlg.showModal() : cmpDlg.setAttribute('open', '');
+  });
+  cmpDlg.addEventListener('click', function (e) { if (e.target.closest('[data-sub]')) cmpDlg.close(); });
+  syncBar();
+
+
+  /* ================= 8 · self-service support ================= */
+  var PI = {
+    off: '<path d="M2 8.8a15 15 0 0 1 4.2-2.6M9.3 5.2A15 15 0 0 1 22 8.8M5 12.5a10 10 0 0 1 3-1.9M12.5 10a10 10 0 0 1 6.5 2.5M8.5 16a5 5 0 0 1 5.3-.9"/><circle cx="12" cy="19.5" r="1"/><path d="M3 3l18 18"/>',
+    slow: '<path d="M12 14l4-4"/><path d="M3.3 17a9 9 0 1 1 17.4 0"/><circle cx="12" cy="14" r="1.2"/>',
+    wifi: '<path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/><path d="M1.5 9a15 15 0 0 1 21 0"/>',
+    pass: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'
+  };
+  var PROBS = [
+    {k: 'off', t: 'الإنترنت مقطوع تمامًا', s: [
+      'تأكد أن الراوتر والجهاز الخارجي (الأنتينا) موصولان بالكهرباء وأن أضواءهما تعمل.',
+      'أطفئ الراوتر والجهاز الخارجي 30 ثانية، ثم شغّلهما وانتظر دقيقتين.',
+      'تأكد أن كابل الشبكة بين الأنتينا والراوتر مثبت جيدًا من الطرفين.',
+      'تأكد أن اشتراكك لم ينتهِ، من تاريخ التجديد أو من وكيلك.']},
+    {k: 'slow', t: 'الإنترنت بطيء', s: [
+      'أوقف التحميلات وتحديثات الهاتف والتلفاز مؤقتًا.',
+      'افصل الأجهزة التي لا تستخدمها عن الواي فاي.',
+      'اقترب من الراوتر، أو ضعه في مكان مرتفع ومفتوح.',
+      'تأكد أن حصتك من الغيغات لم تنتهِ هذا الشهر.']},
+    {k: 'wifi', t: 'شبكة الواي فاي لا تظهر', s: [
+      'تأكد أن ضوء الواي فاي في الراوتر يعمل.',
+      'أعد تشغيل الراوتر وانتظر دقيقتين.',
+      'أطفئ الواي فاي في هاتفك ثم شغّله من جديد.',
+      'جرّب من جهاز آخر لتعرف هل المشكلة في الهاتف أم في الراوتر.']},
+    {k: 'pass', t: 'نسيت كلمة سر الواي فاي', s: [
+      'انظر إلى الملصق أسفل الراوتر، غالبًا مكتوبة عليه.',
+      'إن غيّرتها سابقًا، ادخل صفحة إعدادات الراوتر من جهاز متصل (غالبًا 192.168.1.1).',
+      'أو اطلب من فريق الدعم تغييرها لك.']}
+  ];
+  var probBox = document.getElementById('problems'), fixBox = document.getElementById('fix'), curProb = PROBS[0];
+  function pIcon(k) { return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + PI[k] + '</svg>'; }
+  probBox.innerHTML = PROBS.map(function (p, i) { return '<button class="prob" type="button" data-i="' + i + '" aria-pressed="' + (i === 0) + '"><span class="pi">' + pIcon(p.k) + '</span><span>' + p.t + '</span></button>'; }).join('');
+  function drawFix() {
+    var p = curProb;
+    fixBox.innerHTML = '<h3>' + p.t + '</h3><div class="fix-bar" aria-hidden="true"><i id="fixBar"></i></div><ol>' +
+      p.s.map(function (st, i) { return '<li><label><input type="checkbox" data-s="' + i + '"><span>' + st + '</span></label></li>'; }).join('') + '</ol>' +
+      '<div class="ask"><p>هل انحلت المشكلة؟</p><button class="btn btn-blue" type="button" id="fixYes">نعم، انحلت</button><a class="btn btn-white" id="fixNo" target="_blank" rel="noopener" href="#">لا، تواصل مع الدعم</a></div>';
+    function upd() {
+      var done = fixBox.querySelectorAll('input:checked').length;
+      document.getElementById('fixBar').style.width = (done / p.s.length * 100) + '%';
+      var tried = [].map.call(fixBox.querySelectorAll('input:checked'), function (c) { return '- ' + p.s[+c.dataset.s]; }).join('\n');
+      document.getElementById('fixNo').href = waLink('طلب دعم فني — الموجة الذكية\nالمشكلة: ' + p.t + (tried ? '\nجرّبت:\n' + tried : ''));
+    }
+    fixBox.addEventListener('change', upd); upd();
+    document.getElementById('fixYes').addEventListener('click', function () {
+      fixBox.innerHTML = '<div class="solved"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4f7d1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>رائع! استمتع بالإنترنت.</span></div><button class="btn btn-white" type="button" id="fixAgain">مشكلة أخرى؟</button>';
+      document.getElementById('fixAgain').addEventListener('click', drawFix);
+      if (window.gsap && !reduce) gsap.fromTo(fixBox.firstChild, {scale: .9}, {scale: 1, duration: .5, ease: 'back.out(2)'});
+    });
+  }
+  probBox.addEventListener('click', function (e) {
+    var b = e.target.closest('.prob'); if (!b) return;
+    curProb = PROBS[+b.dataset.i];
+    probBox.querySelectorAll('.prob').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+    drawFix();
+    if (window.gsap && !reduce) gsap.fromTo(fixBox, {y: 12}, {y: 0, duration: .4, ease: 'power2.out'});
+  });
+  drawFix();
+
+  /* ================= 11 · tips ================= */
+  var TI = {
+    router: '<rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 16.5h.01M11 16.5h.01"/><path d="M8 9.5a5.5 5.5 0 0 1 8 0M5.5 7a9 9 0 0 1 13 0"/>',
+    save: '<path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    shield: '<path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>'
+  };
+  var TIPS = [
+    {i: 'router', c: '#dcebf8', t: 'أين تضع الراوتر؟', s: 'مكان الراوتر يغيّر سرعة الواي فاي في كل غرفة.', l: 'الإشارة تنتشر من الراوتر في كل الاتجاهات، وتضعف مع كل حاجز.', b: ['ضعه في وسط البيت قدر الإمكان، لا في زاوية.', 'ارفعه عن الأرض، فوق خزانة أو رف.', 'أبعده عن الجدران السميكة والمرايا وأحواض السمك.', 'أبعده عن المايكرويف والهواتف اللاسلكية لأنها تشوّش الإشارة.']},
+    {i: 'save', c: '#eef7e2', t: 'وفّر غيغاتك', s: 'إعدادات بسيطة تجعل حصتك تكفي الشهر كله.', l: 'الفيديو يستهلك أغلب الغيغات، وجودته هي مفتاح التوفير.', b: ['اضبط جودة يوتيوب على 720p بدل 1080p أو 4K.', 'أوقف التشغيل التلقائي للفيديو في فيسبوك وإنستغرام وتيك توك.', 'اجعل تحديثات الهاتف تعمل على الواي فاي فقط وفي أوقات محددة.', 'راجع التطبيقات التي تستهلك في الخلفية من إعدادات الهاتف.']},
+    {i: 'clock', c: '#f6e8cc', t: 'استفد من الساعات الذهبية', s: 'من 3 فجرًا حتى 11 صباحًا السرعة مضاعفة.', l: 'خارج وقت الذروة الشبكة أخف، فتتضاعف سرعتك في معظم الباقات.', b: ['أجّل التحميلات الكبيرة والألعاب الجديدة إلى الصباح.', 'فعّل تحديثات الهاتف والحاسوب التلقائية في الصباح الباكر.', 'في Smart X1 التحميل مجاني من 3 فجرًا حتى 9 صباحًا.']},
+    {i: 'shield', c: '#dcebf8', t: 'احمِ شبكتك', s: 'لا تجعل الجيران يستهلكون غيغاتك.', l: 'شبكة بلا حماية جيدة تعني سرعة أقل وغيغات تنفد بسرعة.', b: ['غيّر كلمة السر الافتراضية المكتوبة على الراوتر.', 'اختر كلمة سر طويلة فيها أرقام وحروف.', 'استخدم تشفير WPA2 أو WPA3 من إعدادات الراوتر.', 'راجع قائمة الأجهزة المتصلة من وقت لآخر.']}
+  ];
+  document.getElementById('tipGrid').innerHTML = TIPS.map(function (t, i) {
+    return '<button class="tip" type="button" data-t="' + i + '"><span class="ti" style="background:' + t.c + '"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + TI[t.i] + '</svg></span><b>' + t.t + '</b><span>' + t.s + '</span><em>اقرأ النصيحة ←</em></button>';
+  }).join('');
+  var tipDlg = document.getElementById('tipDlg');
+  document.getElementById('tipGrid').addEventListener('click', function (e) {
+    var b = e.target.closest('.tip'); if (!b) return;
+    var t = TIPS[+b.dataset.t];
+    document.getElementById('tipTitle').textContent = t.t;
+    document.getElementById('tipBody').innerHTML = '<p class="lead">' + t.l + '</p><ul>' + t.b.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>';
+    tipDlg.showModal ? tipDlg.showModal() : tipDlg.setAttribute('open', '');
+  });
+
+  /* ================= 13 · theme ================= */
+  var root = document.documentElement;
+  function isDark() { return root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; }
+  function labelTheme() { document.getElementById('themeBtn').setAttribute('aria-label', isDark() ? T('الوضع النهاري', 'Light mode') : T('الوضع الليلي', 'Dark mode')); }
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('sw-theme', next); } catch (e) {}
+    labelTheme();
+  });
+  labelTheme();
+
+
+  /* ================= 13 · English version ================= */
+  // Arabic is the source text; English is applied over the DOM (and anything rendered later) by lookup.
+  var EN = {
+    'الموجة الذكية': 'Smart Wave', 'الموجة الذكية — الرئيسية': 'Smart Wave — Home', 'الأقسام': 'Sections', 'القائمة': 'Menu', 'روابط': 'Links',
+    'اختر باقتك': 'Find a plan', 'الباقات': 'Plans', 'التغطية': 'Coverage', 'الدعم الفني': 'Support', 'نصائح': 'Tips', 'الوكلاء': 'Agents', 'أسئلة شائعة': 'FAQ',
+    'اشترك': 'Subscribe', 'اشترك الآن': 'Subscribe now', 'أقرب وكيل': 'Nearest agent', 'الوضع الليلي': 'Dark mode', 'الوضع النهاري': 'Light mode', 'إغلاق': 'Close',
+    'برج جديد في المشروع الهضبة قرب الرابش': 'New tower in Al-Hadba, near Al-Rabesh', 'على الموجة الذكية…': 'On Smart Wave…', 'كل شيء أسرع.': 'everything is faster.', 'اللعب بلا لاق.': 'gaming has no lag.', 'الأفلام بلا تقطيع.': 'movies never buffer.', 'العمل أسهل.': 'work is easier.', 'الرفع أسرع.': 'uploads are faster.',
+    'سرعة تصل إلى 16 ميغابت، وأبراج قريبة من بيتك في طرابلس.': 'Speeds up to 16 Mbps, with towers close to your home in Tripoli.',
+    'ساعدني أختار باقة': 'Help me pick a plan', 'هل التغطية عندي؟': 'Is my area covered?',
+    'أعلى سرعة': 'Top speed', 'في أكبر باقة': 'In our biggest plan', 'السرعة من 3 فجرًا حتى 11 صباحًا': 'Speed from 3 AM to 11 AM', 'في أحياء طرابلس': 'Across Tripoli', 'وكلاء': 'agents', 'غيغا': 'GB', 'ميغابت': 'Mbps',
+    'أي باقة تناسبني؟': 'Which plan suits me?', 'كم شخص يستخدم الإنترنت في البيت؟': 'How many people use the internet at home?', 'ماذا تستخدمون أكثر؟': 'What do you use it for most?', 'كم ميزانيتك الشهرية؟': "What's your monthly budget?",
+    'شخص أو اثنان': 'One or two', 'من 3 إلى 5': '3 to 5', '6 أو أكثر': '6 or more', 'تصفح وسوشيال': 'Browsing & social', 'أفلام ويوتيوب': 'Movies & YouTube', 'ألعاب أونلاين': 'Online gaming', 'عمل ومكتب': 'Work & office',
+    'أقل من 45 د.ل': 'Under 45 LYD', 'بين 45 و90 د.ل': '45 – 90 LYD', 'أكثر من 90 د.ل': 'Over 90 LYD',
+    'التالي ←': 'Next →', '→ رجوع': '← Back', 'اعرض الباقة المناسبة': 'Show my plan', 'الباقة المناسبة لك': 'Your best match', 'اشترك في هذه الباقة': 'Get this plan', 'أعد الأسئلة': 'Start over',
+    'أعلى سرعة وحصة كبيرة للّعب والتحميل معًا.': 'Top speed and a big allowance for gaming and downloads together.',
+    'مصممة للّعب أونلاين بسرعة 12 ميغابت وحصة 170 غيغا.': 'Built for online gaming: 12 Mbps with 170 GB.',
+    'بلا حدود وبأعلى سرعة، مناسبة للعمل طوال اليوم.': 'Unlimited at top speed — made for working all day.',
+    'بلا حدود، فلا تقلق من نفاد الغيغات أثناء العمل.': 'Unlimited, so you never run out mid-work.',
+    'بلا حدود بأقل سعر، مناسبة للمشاهدة بجودة عادية.': 'Unlimited at the lowest price, fine for standard-quality streaming.',
+    'المشاهدة تستهلك الكثير، والباقة غير المحدودة تريحك من الحساب.': 'Streaming uses a lot — unlimited means no counting.',
+    'بلا حدود وبسرعة 10 ميغابت، تكفي عدة شاشات معًا.': 'Unlimited at 10 Mbps, enough for several screens at once.',
+    'بلا حدود بسعر قليل لعدد أكبر من الأشخاص.': 'Unlimited at a low price for more people.', 'تكفي التصفح والسوشيال لشخص أو اثنين.': 'Plenty for browsing and social for one or two people.',
+    'بلا حدود لعائلة كبيرة بسعر متوسط.': 'Unlimited for a big family at a mid price.', 'حصة 99 غيغا تكفي العائلة شهرًا كاملًا.': '99 GB keeps a family going all month.',
+    'حصة مريحة للتصفح مع ترحيل الغيغات.': 'A comfortable allowance with GB rollover.', 'سرعة 12 ميغابت مع تحميل مجاني صباحًا وترحيل الغيغات.': '12 Mbps with free morning downloads and GB rollover.',
+    'باقة لكل بيت.': 'A plan for every home.', 'الأسعار بالدينار الليبي شهريًا.': 'Prices in Libyan dinars per month.', 'نوع الباقة': 'Plan type', 'باقات محدودة': 'Capped plans', 'غير محدودة': 'Unlimited', 'اسحب لرؤية كل الباقات': 'Swipe to see all plans',
+    'الأكثر طلبًا': 'Most popular', 'أضف للمقارنة': 'Add to compare', 'د.ل/شهر': 'LYD/mo', 'د.ل': 'LYD', 'بلا حدود': 'Unlimited',
+    'ضعف السرعة من 3 فجرًا حتى 11 صباحًا': 'Double speed 3 AM – 11 AM', 'ترحيل الغيغات': 'GB rollover', 'وقت خارج الذروة من 3 فجرًا حتى 11 صباحًا': 'Off-peak 3 AM – 11 AM',
+    'مصممة للّعب أونلاين': 'Built for online gaming', 'تحميل مجاني من 3 فجرًا حتى 9 صباحًا': 'Free downloads 3 AM – 9 AM', 'تحميل مجاني خارج وقت الذروة': 'Free off-peak downloads', 'مناسبة للمكاتب والمحلات': 'Great for offices and shops',
+    'المقارنة': 'Compare', 'باقتان للمقارنة': '2 plans to compare', 'اختر باقة أخرى للمقارنة': 'Pick one more plan to compare', 'ثلاث باقات كحد أقصى': 'Three plans at most', 'قارن الآن': 'Compare now', 'إلغاء': 'Clear', 'إغلاق القائمة': 'Close menu', 'إلغاء المقارنة': 'Clear comparison',
+    'مقارنة الباقات': 'Compare plans', 'السرعة': 'Speed', 'الحصة': 'Allowance', 'السعر الشهري': 'Monthly price', 'سعر الغيغا': 'Price per GB', 'المزايا': 'Features', 'الخانة الخضراء هي الأفضل في كل صف.': 'Green marks the best in each row.',
+    'حيّك متصل، والشبكة تكبر.': 'Your area is connected — and growing.', 'اختر منطقتك لتعرف هل الخدمة متوفرة عندك الآن.': 'Pick your area to see if the service reaches you today.', 'منطقتك': 'Your area', 'افحص': 'Check', 'مناطق سريعة': 'Quick areas',
+    'حالة المناطق هنا مثال توضيحي، تُحدَّث من الشركة قبل النشر.': 'Area statuses here are an example, to be updated by the company before launch.',
+    'متوفرة الآن': 'Available now', 'قريبًا': 'Coming soon', 'غير متوفرة بعد': 'Not yet available', 'برج': 'Tower', 'بيت متصل': 'Connected home', 'البحر': 'Sea',
+    'يمكنك الاشتراك الآن، وسنحدد معك موعد التركيب.': "You can subscribe now — we'll set an installation time with you.", 'اطلب الاشتراك': 'Request a subscription',
+    'اترك رقمك وسنبلغك أول ما تتوفر الخدمة في منطقتك.': "Leave your number and we'll tell you as soon as it arrives.", 'أبلغني عبر واتساب': 'Notify me on WhatsApp',
+    'مدينة مصغّرة ثلاثية الأبعاد: أبراج ترسل موجات إلى البيوت': 'A 3D mini city: towers sending waves to homes',
+    'لماذا الموجة': 'Why Smart Wave', 'مصمّمة لطريقة استخدامك.': 'Built around how you use it.', 'سرعة تُحسّ بها': 'Speed you can feel', 'حتى 16 ميغابت في Extra X2 وUnlimit Business.': 'Up to 16 Mbps on Extra X2 and Unlimit Business.',
+    'مؤشر سرعة حتى 16 ميغابت': 'Speed gauge up to 16 Mbps', 'ضعف السرعة صباحًا': 'Double speed in the morning', 'من 3 فجرًا حتى 11 صباحًا في معظم الباقات.': 'From 3 AM to 11 AM on most plans.',
+    '12ص': '12a', '6ص': '6a', '12ظ': '12p', '6م': '6p', 'لعب بلا لاق': 'Lag-free gaming', 'Smart Gamer: ‏170 غيغا بسرعة 12 ميغابت.': 'Smart Gamer: 170 GB at 12 Mbps.',
+    'جيجاتك لا تضيع': "Your GB don't go to waste", 'ترحيل الغيغات المتبقية للشهر التالي في باقات مختارة.': 'Unused GB roll over to next month on selected plans.', 'متبقية': 'left', 'الشهر القادم': 'next month',
+    'عندك مشكلة؟ نحلّها معًا.': "Something wrong? Let's fix it together.", 'اختر المشكلة واتبع الخطوات. أغلب المشاكل تنحل في دقيقتين.': 'Pick the problem and follow the steps. Most issues are fixed in two minutes.', 'نوع المشكلة': 'Problem type',
+    'الإنترنت مقطوع تمامًا': 'No internet at all', 'الإنترنت بطيء': 'Internet is slow', 'شبكة الواي فاي لا تظهر': "Wi-Fi network isn't showing", 'نسيت كلمة سر الواي فاي': 'Forgot the Wi-Fi password',
+    'تأكد أن الراوتر والجهاز الخارجي (الأنتينا) موصولان بالكهرباء وأن أضواءهما تعمل.': 'Check the router and the outdoor unit (antenna) are powered and their lights are on.',
+    'أطفئ الراوتر والجهاز الخارجي 30 ثانية، ثم شغّلهما وانتظر دقيقتين.': 'Turn the router and outdoor unit off for 30 seconds, then on, and wait two minutes.',
+    'تأكد أن كابل الشبكة بين الأنتينا والراوتر مثبت جيدًا من الطرفين.': 'Make sure the cable between the antenna and router is firmly plugged in at both ends.',
+    'تأكد أن اشتراكك لم ينتهِ، من تاريخ التجديد أو من وكيلك.': "Check your subscription hasn't expired — see your renewal date or ask your agent.",
+    'أوقف التحميلات وتحديثات الهاتف والتلفاز مؤقتًا.': 'Pause downloads and phone or TV updates for now.', 'افصل الأجهزة التي لا تستخدمها عن الواي فاي.': "Disconnect devices you aren't using from Wi-Fi.",
+    'اقترب من الراوتر، أو ضعه في مكان مرتفع ومفتوح.': 'Move closer to the router, or put it somewhere high and open.', 'تأكد أن حصتك من الغيغات لم تنتهِ هذا الشهر.': "Check you haven't used up this month's GB.",
+    'تأكد أن ضوء الواي فاي في الراوتر يعمل.': "Check the router's Wi-Fi light is on.", 'أعد تشغيل الراوتر وانتظر دقيقتين.': 'Restart the router and wait two minutes.',
+    'أطفئ الواي فاي في هاتفك ثم شغّله من جديد.': "Turn your phone's Wi-Fi off and on again.", 'جرّب من جهاز آخر لتعرف هل المشكلة في الهاتف أم في الراوتر.': "Try another device to see whether it's the phone or the router.",
+    'انظر إلى الملصق أسفل الراوتر، غالبًا مكتوبة عليه.': "Look at the sticker under the router — it's usually printed there.",
+    'إن غيّرتها سابقًا، ادخل صفحة إعدادات الراوتر من جهاز متصل (غالبًا 192.168.1.1).': "If you changed it, open the router's settings page from a connected device (usually 192.168.1.1).",
+    'أو اطلب من فريق الدعم تغييرها لك.': 'Or ask our support team to change it for you.', 'هل انحلت المشكلة؟': 'Is it fixed?', 'نعم، انحلت': "Yes, it's fixed", 'لا، تواصل مع الدعم': 'No, contact support',
+    'رائع! استمتع بالإنترنت.': 'Great! Enjoy your internet.', 'مشكلة أخرى؟': 'Another problem?',
+    'استفد من إنترنتك أكثر.': 'Get more from your internet.', 'اقرأ النصيحة ←': 'Read tip →',
+    'أين تضع الراوتر؟': 'Where should the router go?', 'مكان الراوتر يغيّر سرعة الواي فاي في كل غرفة.': "Your router's spot changes Wi-Fi speed in every room.",
+    'الإشارة تنتشر من الراوتر في كل الاتجاهات، وتضعف مع كل حاجز.': 'The signal spreads out in every direction and weakens with every obstacle.',
+    'ضعه في وسط البيت قدر الإمكان، لا في زاوية.': 'Put it as central as you can — not in a corner.', 'ارفعه عن الأرض، فوق خزانة أو رف.': 'Raise it off the floor, onto a cupboard or shelf.',
+    'أبعده عن الجدران السميكة والمرايا وأحواض السمك.': 'Keep it away from thick walls, mirrors and fish tanks.', 'أبعده عن المايكرويف والهواتف اللاسلكية لأنها تشوّش الإشارة.': 'Keep it away from microwaves and cordless phones — they interfere.',
+    'وفّر غيغاتك': 'Save your GB', 'إعدادات بسيطة تجعل حصتك تكفي الشهر كله.': 'Simple settings that make your allowance last the month.', 'الفيديو يستهلك أغلب الغيغات، وجودته هي مفتاح التوفير.': 'Video uses most of your GB, and its quality is the key to saving.',
+    'اضبط جودة يوتيوب على 720p بدل 1080p أو 4K.': 'Set YouTube to 720p instead of 1080p or 4K.', 'أوقف التشغيل التلقائي للفيديو في فيسبوك وإنستغرام وتيك توك.': 'Turn off video autoplay in Facebook, Instagram and TikTok.',
+    'اجعل تحديثات الهاتف تعمل على الواي فاي فقط وفي أوقات محددة.': 'Let phone updates run on Wi-Fi only, at set times.', 'راجع التطبيقات التي تستهلك في الخلفية من إعدادات الهاتف.': 'Check which apps use data in the background in your phone settings.',
+    'استفد من الساعات الذهبية': 'Use the golden hours', 'من 3 فجرًا حتى 11 صباحًا السرعة مضاعفة.': 'From 3 AM to 11 AM your speed doubles.', 'خارج وقت الذروة الشبكة أخف، فتتضاعف سرعتك في معظم الباقات.': 'Off-peak the network is lighter, so most plans run at double speed.',
+    'أجّل التحميلات الكبيرة والألعاب الجديدة إلى الصباح.': 'Save big downloads and new games for the morning.', 'فعّل تحديثات الهاتف والحاسوب التلقائية في الصباح الباكر.': 'Schedule phone and computer updates for early morning.',
+    'في Smart X1 التحميل مجاني من 3 فجرًا حتى 9 صباحًا.': 'On Smart X1, downloads are free from 3 AM to 9 AM.',
+    'احمِ شبكتك': 'Protect your network', 'لا تجعل الجيران يستهلكون غيغاتك.': "Don't let the neighbours use up your GB.", 'شبكة بلا حماية جيدة تعني سرعة أقل وغيغات تنفد بسرعة.': 'A poorly protected network means less speed and GB that run out fast.',
+    'غيّر كلمة السر الافتراضية المكتوبة على الراوتر.': 'Change the default password printed on the router.', 'اختر كلمة سر طويلة فيها أرقام وحروف.': 'Pick a long password with numbers and letters.',
+    'استخدم تشفير WPA2 أو WPA3 من إعدادات الراوتر.': "Use WPA2 or WPA3 encryption in the router's settings.", 'راجع قائمة الأجهزة المتصلة من وقت لآخر.': 'Check the list of connected devices now and then.',
+    'وكيلنا قريب منك.': "There's an agent near you.", 'اشترك أو اشحن رصيدك من أقرب محل.': 'Subscribe or top up at the nearest shop.', 'ابحث باسم الحي أو المحل': 'Search by area or shop name', 'مثال: حي الزهور': 'e.g. Hay Al-Zohour',
+    'لا يوجد وكيل بهذا الاسم. جرّب اسم حيّ قريب.': 'No agent by that name. Try a nearby area.', 'الرقم غير متوفر': 'Number not available',
+    'عندك سؤال؟': 'Got a question?', 'ما معنى «وقت خارج الذروة»؟': 'What does "off-peak" mean?',
+    'هو الوقت من 3 فجرًا حتى 11 صباحًا، يقلّ فيه الضغط على الشبكة، فتتضاعف سرعتك في معظم الباقات. في Smart X1 يكون التحميل مجانيًا من 3 فجرًا حتى 9 صباحًا.': "It's 3 AM to 11 AM, when the network is quieter, so most plans run at double speed. On Smart X1 downloads are free from 3 AM to 9 AM.",
+    'كيف يعمل ترحيل الجيجات؟': 'How does GB rollover work?', 'في باقات Smart Normal وMedium وExtra وX1، ما يتبقى من غيغات في نهاية الشهر يُضاف إلى الشهر التالي عند التجديد.': "On Smart Normal, Medium, Extra and X1, any GB left at month's end is added to the next month when you renew.",
+    'ما الفرق بين المحدودة وغير المحدودة؟': "What's the difference between capped and unlimited?", 'المحدودة تعطيك حصة غيغات بسرعة أعلى، وغير المحدودة تعطيك استخدامًا بلا حدود بسرعة ثابتة تبدأ من 3 ميغابت.': 'Capped plans give you a GB allowance at higher speed; unlimited plans give endless use at a steady speed from 3 Mbps.',
+    'كيف أشترك أو أشحن رصيدي؟': 'How do I subscribe or top up?', 'من أي وكيل في القائمة أعلاه، أو من منظومة الرصيد إن كان لديك حساب.': 'At any agent listed above, or through the balance system if you have an account.',
+    'سرعة وثبات لبيتك وعملك، مع فريق دعم قريب منك.': 'Speed and stability for home and work, with support close by.', 'الموقع': 'Site', 'تواصل': 'Contact', '[رقم خدمة العملاء]': '[Customer service number]', '[البريد الإلكتروني]': '[Email]', '[رابط فيسبوك]': '[Facebook link]', '© الموجة الذكية للحلول الرقمية': '© Smart Wave Digital Solutions',
+    'طلب اشتراك': 'Subscription request', 'اختر الباقة': 'Choose your plan', 'أين تسكن؟': 'Where do you live?', 'المنطقة': 'Area', 'أقرب معلم (اختياري)': 'Nearest landmark (optional)', 'مثال: قرب جامع حمزة': 'e.g. near Hamza Mosque',
+    'بياناتك': 'Your details', 'الاسم': 'Name', 'الاسم الكامل': 'Full name', 'رقم الهاتف': 'Phone number', 'اكتب اسمك الكامل.': 'Enter your full name.', 'اكتب رقمًا ليبيًا صحيحًا يبدأ بـ 091 أو 092 أو 094 مثلًا.': 'Enter a valid Libyan number, e.g. starting 091, 092 or 094.',
+    'متى يناسبك التركيب؟': 'When suits you for installation?', 'اليوم': 'Day', 'الوقت': 'Time', 'غدًا': 'Tomorrow', 'بعد غد': 'Day after', 'خلال الأسبوع': 'This week', 'صباحًا': 'Morning', 'ظهرًا': 'Afternoon', 'مساءً': 'Evening',
+    'راجع طلبك': 'Review your request', 'الباقة': 'Plan', 'الهاتف': 'Phone', 'موعد التركيب': 'Installation', 'جاهز للإرسال': 'Ready to send', 'أرسل عبر واتساب': 'Send via WhatsApp',
+    'سرعة تصل إلى 100 ميغابت، رفع بنفس سرعة التحميل، وبينج ثابت ومنخفض.': 'Up to 100 Mbps, uploads as fast as downloads, and low, stable ping.',
+    'ضعف السرعة من 3 فجرًا حتى 11 صباحًا': 'Double speed 3 AM – 11 AM', 'سرعات تصل إلى 100 ميغابت.': 'Speeds up to 100 Mbps.', 'مؤشر سرعة حتى 100 ميغابت': 'Speed gauge up to 100 Mbps',
+    'بينج ثابت ومنخفض': 'Low, stable ping', 'استجابة سريعة بلا تقطيع في الألعاب ومكالمات الفيديو.': 'Quick response with no stutter in games and video calls.', 'بينج': 'Ping',
+    'رفع بنفس سرعة التحميل': 'Upload as fast as download', 'في كل باقاتنا، سرعة الرفع تساوي سرعة التحميل.': 'On every plan, upload speed equals download speed.',
+    '↓ تحميل': '↓ Download', '↑ رفع': '↑ Upload', 'سرعة الرفع': 'Upload speed',
+    'هل سرعة الرفع مثل سرعة التحميل؟': 'Is upload as fast as download?', 'نعم، في كل باقاتنا سرعة الرفع تساوي سرعة التحميل. هذا مهم لمكالمات الفيديو والبث المباشر ورفع الملفات والصور.': 'Yes — on every plan, upload equals download. That matters for video calls, live streaming and uploading files and photos.',
+    'ما هو البينج ولماذا يهمّ؟': 'What is ping and why does it matter?', 'البينج هو الوقت الذي تحتاجه الإشارة لتذهب وتعود. كلما كان منخفضًا وثابتًا كانت الألعاب ومكالمات الفيديو أسرع استجابة وبلا تقطيع.': 'Ping is the time a signal takes to go and come back. The lower and steadier it is, the snappier games and video calls feel.',
+    'طريق': 'Road', 'حيّ ثلاثي الأبعاد: أبراج ترسل موجات إلى البيوت فتضيء نوافذها': 'A 3D neighbourhood: towers send waves and home windows light up',
+    'اضغط «أرسل عبر واتساب» ليصل طلبك جاهزًا، وسيتواصل معك فريقنا لتأكيد الموعد.': 'Tap "Send via WhatsApp" to send your request; our team will call to confirm the time.'
+  };
+  var AREA_EN = {'السائح': 'Al-Sayeh', 'عين زارة': 'Ain Zara', 'حي الزهور': 'Hay Al-Zohour', 'المشروع الهضبة': 'Al-Hadba', 'خلة بن عون': 'Khallat Bin Aoun', 'سوق الأحد': 'Souq Al-Ahad', 'حي دمشق': 'Hay Dimashq', 'بير العالم': 'Bir Al-Alam', 'سوق الجمعة': 'Souq Al-Jumaa', 'الفرناج': 'Al-Fornaj', 'تاجوراء': 'Tajoura', 'جنزور': 'Janzour', 'قرقارش': 'Gargaresh', 'بن عاشور': 'Ben Ashour'};
+  function area(a) { return AREA_EN[a] || a; }
+  var RX = [
+    [/^↓ تحميل (.+) ميغابت$/, '↓ Download $1 Mbps'], [/^↑ رفع (.+) ميغابت$/, '↑ Upload $1 Mbps'],
+    [/^الخطوة (\d) من 4$/, 'Step $1 of 4'], [/^(\d) باقات للمقارنة$/, '$1 plans to compare'],
+    [/^الخدمة متوفرة في (.+)\.$/, function (m, a) { return 'Service is available in ' + area(a) + '.'; }],
+    [/^الخدمة تصل قريبًا إلى (.+)\. أرسل الطلب وسنبلغك فور توفرها\.$/, function (m, a) { return 'Service is coming soon to ' + area(a) + ". Send your request and we'll let you know."; }],
+    [/^الخدمة لم تصل بعد إلى (.+)\. أرسل الطلب وسنبلغك فور توفرها\.$/, function (m, a) { return "Service hasn't reached " + area(a) + " yet. Send your request and we'll let you know."; }],
+    [/^الموجة تصل إلى (.+)!$/, function (m, a) { return 'Smart Wave reaches ' + area(a) + '!'; }],
+    [/^نعمل على الوصول إلى (.+)\.$/, function (m, a) { return "We're working on reaching " + area(a) + '.'; }],
+    [/^لم نصل بعد إلى (.+)\.$/, function (m, a) { return "We haven't reached " + area(a) + ' yet.'; }],
+    [/^اتصل بـ (.+)$/, 'Call $1'], [/^رقم (.+) غير متوفر$/, 'No number for $1']
+  ];
+  var TOK = [['د.ل/شهر', 'LYD/mo'], ['ميغابت', 'Mbps'], ['غيغا', 'GB'], ['د.ل', 'LYD'], ['بلا حدود', 'Unlimited'], ['متوفرة الآن', 'Available now'], ['غير متوفرة بعد', 'Not yet available'], ['قريبًا', 'Coming soon'], ['غدًا', 'Tomorrow'], ['بعد غد', 'Day after'], ['خلال الأسبوع', 'This week'], ['صباحًا', 'Morning'], ['ظهرًا', 'Afternoon'], ['مساءً', 'Evening'], ['،', ',']];
+  Object.keys(AREA_EN).sort(function (a, b) { return b.length - a.length; }).forEach(function (k) { TOK.unshift([k, AREA_EN[k]]); });
+  var HAS_AR = /[؀-ۿ]/;
+  function tr(str) {
+    var k = str.trim(); if (!k || !HAS_AR.test(k)) return null;
+    var out = EN[k];
+    if (!out) for (var i = 0; i < RX.length && !out; i++) if (RX[i][0].test(k)) out = k.replace(RX[i][0], RX[i][1]);
+    if (!out) { out = k; TOK.forEach(function (t) { out = out.split(t[0]).join(t[1]); }); if (out === k) return null; }
+    return str.replace(k, out);
+  }
+  var LANG = 'ar';
+  try { LANG = localStorage.getItem('sw-lang') === 'en' ? 'en' : 'ar'; } catch (e) {}
+  T = function (ar, en) { return LANG === 'en' ? en : ar; };
+  var orig = new Map(), attrs = ['placeholder', 'aria-label', 'title'];
+  function skip(n) { var p = n.parentElement; return !p || p.closest('script,style,#agentList,[data-keep]'); }
+  function translateTree(rootNode) {
+    if (rootNode.nodeType === 3) { if (!skip(rootNode)) { var v = tr(rootNode.nodeValue); if (v !== null) { if (!orig.has(rootNode)) orig.set(rootNode, rootNode.nodeValue); rootNode.nodeValue = v; } } return; }
+    if (rootNode.nodeType !== 1 || rootNode.closest('script,style,#agentList')) return;
+    var w = document.createTreeWalker(rootNode, NodeFilter.SHOW_TEXT), n;
+    while ((n = w.nextNode())) translateTree(n);
+    [rootNode].concat([].slice.call(rootNode.querySelectorAll('[placeholder],[aria-label],[title]'))).forEach(function (el) {
+      attrs.forEach(function (a) {
+        if (!el.hasAttribute || !el.hasAttribute(a)) return;
+        var v = tr(el.getAttribute(a)); if (v === null) return;
+        if (!el.hasAttribute('data-ar-' + a)) el.setAttribute('data-ar-' + a, el.getAttribute(a));
+        el.setAttribute(a, v);
+      });
+    });
+  }
+  var mo = new MutationObserver(function (list) {
+    if (LANG !== 'en') return;
+    list.forEach(function (m) {
+      if (m.type === 'characterData') translateTree(m.target);
+      else m.addedNodes.forEach(translateTree);
+    });
+  });
+  function applyLang() {
+    root.lang = LANG; root.dir = LANG === 'en' ? 'ltr' : 'rtl';
+    document.title = LANG === 'en' ? 'Smart Wave' : 'الموجة الذكية';
+    if (LANG === 'en') {
+      translateTree(document.body);
+      mo.observe(document.body, {childList: true, subtree: true, characterData: true});
+    } else {
+      mo.disconnect();
+      orig.forEach(function (v, node) { node.nodeValue = v; }); orig.clear();
+      document.querySelectorAll('[data-ar-placeholder],[data-ar-aria-label],[data-ar-title]').forEach(function (el) {
+        attrs.forEach(function (a) { if (el.hasAttribute('data-ar-' + a)) { el.setAttribute(a, el.getAttribute('data-ar-' + a)); el.removeAttribute('data-ar-' + a); } });
+      });
+    }
+    var lb = document.getElementById('langBtn');
+    lb.textContent = LANG === 'en' ? 'ع' : 'EN';
+    lb.setAttribute('aria-label', LANG === 'en' ? 'العربية' : 'English');
+    lb.setAttribute('lang', LANG === 'en' ? 'ar' : 'en');
+    labelTheme(); moveThumb();
+  }
+  document.getElementById('langBtn').addEventListener('click', function () {
+    LANG = LANG === 'en' ? 'ar' : 'en';
+    try { localStorage.setItem('sw-lang', LANG); } catch (e) {}
+    applyLang();
+  });
+  applyLang();
+
+
+  /* ---------- campaign line: «على الموجة الذكية… ___» ---------- */
+  (function () {
+    var el = document.getElementById('rot'), LINES = ['كل شيء أسرع.', 'اللعب بلا لاق.', 'الأفلام بلا تقطيع.', 'العمل أسهل.', 'الرفع أسرع.'], i = 0;
+    if (!window.gsap || reduce) return;
+    setInterval(function () {
+      if (document.hidden) return;
+      i = (i + 1) % LINES.length;
+      gsap.timeline()
+        .to(el, {y: -18, opacity: 0, filter: 'blur(4px)', duration: .35, ease: 'power2.in'})
+        .add(function () { el.textContent = LINES[i]; })
+        .fromTo(el, {y: 22, opacity: 0, filter: 'blur(4px)'}, {y: 0, opacity: 1, filter: 'blur(0px)', duration: .55, ease: 'power3.out'});
+    }, 3000);
+  })();
+
+
+  /* ---------- FAQ: smooth accordion, one open at a time ---------- */
+  (function () {
+    var items = [].slice.call(document.querySelectorAll('.faq-list details'));
+    function sumH(d) { return d.querySelector('summary').offsetHeight; }
+    function stop(d) { if (d._anim) { d._anim.cancel(); d._anim = null; } clearTimeout(d._t); }
+    function close(d) {
+      if (!d.open || d._closing) return;
+      stop(d);
+      if (reduce || !d.animate) { d.open = false; return; }
+      d._closing = true;
+      var done = function () { if (!d._closing) return; d._closing = false; d.open = false; stop(d); };
+      d._anim = d.animate({height: [d.offsetHeight + 'px', sumH(d) + 3 + 'px']}, {duration: 380, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards'});
+      d._anim.onfinish = done;
+      d._t = setTimeout(done, 420);   // finishes even if the tab is hidden mid-animation
+    }
+    function open(d) {
+      stop(d); d._closing = false;
+      if (reduce || !d.animate) { d.open = true; return; }
+      var start = d.open ? d.offsetHeight : sumH(d) + 3;
+      d.open = true;
+      var end = d.offsetHeight;
+      d._anim = d.animate({height: [start + 'px', end + 'px']}, {duration: 480, easing: 'cubic-bezier(.2,.9,.1,1)'});
+      d.querySelector('.ans p').animate([{opacity: 0, transform: 'translateY(12px)', filter: 'blur(3px)'}, {opacity: 1, transform: 'none', filter: 'blur(0)'}], {duration: 520, delay: 90, easing: 'cubic-bezier(.2,.9,.1,1)', fill: 'backwards'});
+    }
+    items.forEach(function (d) {
+      d.querySelector('summary').addEventListener('click', function (e) {
+        e.preventDefault();
+        if (d.open && !d._closing) close(d);
+        else { items.forEach(function (o) { if (o !== d) close(o); }); open(d); }
+      });
+    });
+  })();
+
+  var d = new Date(); document.getElementById('now').style.insetInlineStart = ((d.getHours() * 60 + d.getMinutes()) / 1440 * 100) + '%';
+
+  /* ---------- scroll motion ---------- */
+  if (window.gsap && window.ScrollTrigger && !reduce) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.hero .copy > *', {y: 30, duration: .9, stagger: .08, ease: 'power3.out'});
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      var o = {v: 0}, end = +el.dataset.count;
+      ScrollTrigger.create({trigger: el, start: 'top 92%', once: true, onEnter: function () {
+        gsap.to(o, {v: end, duration: 1.6, ease: 'power2.out', onUpdate: function () { el.textContent = Math.round(o.v); }});
+      }});
+    });
+    gsap.utils.toArray('[data-rise]').forEach(function (el, i) {
+      gsap.from(el, {y: 40, duration: .8, delay: (i % 4) * .06, ease: 'power3.out', scrollTrigger: {trigger: el, start: 'top 94%', once: true}});
+    });
+    var arc = document.getElementById('gArc'), gn = document.getElementById('gNum'), g = {v: 0};
+    ScrollTrigger.create({trigger: arc, start: 'top 92%', once: true, onEnter: function () {
+      gsap.fromTo(g, {v: 0}, {v: 100, duration: 1.6, ease: 'power3.out', onUpdate: function () { arc.setAttribute('stroke-dashoffset', 100 - g.v); gn.textContent = Math.round(g.v); }});
+    }});
+  }
+
+  /* ---------- WebGL helpers ---------- */
+  if (!window.THREE) return;
+  function makeRenderer(canvas) {
+    try { var r = new THREE.WebGLRenderer({canvas: canvas, antialias: true, alpha: true}); r.setPixelRatio(Math.min(devicePixelRatio, 1.75)); return r; }
+    catch (e) { return null; }
+  }
+  function fit(r, cam, canvas, ortho, after) {
+    function size() {
+      var w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
+      r.setSize(w, h, false);
+      if (ortho) { var a = w / h; cam.left = -ortho * a; cam.right = ortho * a; cam.top = ortho; cam.bottom = -ortho; } else cam.aspect = w / h;
+      cam.updateProjectionMatrix(); if (after) after(w);
+    }
+    size(); new ResizeObserver(size).observe(canvas);
+  }
+  // runs only while the canvas is on screen
+  function animateWhileVisible(canvas, render) {
+    var raf = 0, last = 0, t = 0, on = false;
+    function f(now) { var dt = last ? Math.min(.05, (now - last) / 1000) : 0; last = now; t += dt; render(t, dt); if (on) raf = requestAnimationFrame(f); }
+    render(0, 0);
+    if (reduce) return;
+    new IntersectionObserver(function (e) {
+      if (e[0].isIntersecting && !on) { on = true; last = 0; raf = requestAnimationFrame(f); }
+      else if (!e[0].isIntersecting && on) { on = false; cancelAnimationFrame(raf); }
+    }).observe(canvas);
+  }
+
+  /* ---------- hero: silk wave ---------- */
+  (function () {
+    var canvas = document.getElementById('wave'), r = makeRenderer(canvas); if (!r) return;
+    var scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(40, 1, .1, 50); cam.position.set(0, 0, 7);
+    var mouse = new THREE.Vector2(0, -9), target = new THREE.Vector2(0, -9);
+    var mat = new THREE.ShaderMaterial({
+      transparent: true, side: THREE.DoubleSide, extensions: {derivatives: true},
+      uniforms: {uT: {value: 0}, uM: {value: mouse}},
+      vertexShader: [
+        'uniform float uT; uniform vec2 uM; varying float vH; varying vec2 vUv; varying vec3 vPos;',
+        'void main(){ vUv=uv; vec3 p=position;',
+        ' float h=sin(p.x*.75+uT*.8)*.38 + sin(p.x*1.6-uT*1.1+p.y*.9)*.16 + cos(p.y*1.3+uT*.6+p.x*.3)*.24;',
+        ' vec2 d=p.xy-uM; h+=.55*exp(-dot(d,d)*.45);',
+        ' p.z+=h; vH=h; vec4 w=modelMatrix*vec4(p,1.); vPos=w.xyz; gl_Position=projectionMatrix*viewMatrix*w; }'
+      ].join('\n'),
+      fragmentShader: [
+        'varying float vH; varying vec2 vUv; varying vec3 vPos;',
+        'void main(){',
+        ' vec3 n=normalize(cross(dFdx(vPos),dFdy(vPos))); vec3 v=normalize(cameraPosition-vPos); if(dot(n,v)<0.) n=-n;',
+        ' vec3 l=normalize(vec3(-.4,.9,.7)); float dif=clamp(dot(n,l)*.5+.5,0.,1.);',
+        ' vec3 blue=vec3(.082,.345,.561), blue2=vec3(.114,.416,.663), lime=vec3(.569,.773,.275), gold=vec3(.812,.62,.275);',
+        ' vec3 c=mix(blue,blue2,vUv.y); c=mix(c,lime,smoothstep(.35,1.,vUv.x)*.9); c=mix(c,gold,smoothstep(.25,.75,vH)*.45);',
+        ' c*= .62+.55*dif; c*= .93+.07*step(.5,fract(vUv.y*46.));',
+        ' c+= pow(max(dot(reflect(-l,n),v),0.),28.)*.55;',
+        ' float fres=pow(1.-max(dot(n,v),0.),3.); c=mix(c,vec3(1.),fres*.35);',
+        ' float a=smoothstep(0.,.14,vUv.x)*smoothstep(1.,.86,vUv.x)*smoothstep(0.,.3,vUv.y)*smoothstep(1.,.72,vUv.y);',
+        ' gl_FragColor=vec4(c,a); }'
+      ].join('\n')
+    });
+    var mesh = new THREE.Mesh(new THREE.PlaneGeometry(16, 5.5, 260, 90), mat);
+    mesh.rotation.x = -1.05; scene.add(mesh);
+    fit(r, cam, canvas, 0, function (w) { var mob = w < 700; mesh.position.set(0, mob ? -.2 : -.1, mob ? -1.5 : 0); mesh.scale.setScalar(mob ? .8 : 1); });
+    var hero = canvas.parentElement;
+    hero.addEventListener('pointermove', function (e) {
+      var rc = canvas.getBoundingClientRect();
+      target.set(((e.clientX - rc.left) / rc.width - .5) * 14, (.5 - (e.clientY - rc.top) / rc.height) * 5 - .3);
+    });
+    hero.addEventListener('pointerleave', function () { target.set(0, -9); });
+    animateWhileVisible(canvas, function (t) { mouse.lerp(target, .06); mat.uniforms.uT.value = t; r.render(scene, cam); });
+  })();
+
+  /* ---------- coverage: a semi-realistic neighbourhood that "travels" to the chosen area ---------- */
+  (function () {
+    var canvas = document.getElementById('city'), r = makeRenderer(canvas); if (!r) return;
+    r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap;
+    var scene = new THREE.Scene(), cam = new THREE.OrthographicCamera(-7, 7, 7, -7, .1, 100);
+    cam.position.set(12, 12, 12); cam.lookAt(0, 0, 0);
+    scene.add(new THREE.HemisphereLight(0xffffff, 0xb9ad96, .75));
+    var sun = new THREE.DirectionalLight(0xfff4e0, .75);
+    sun.position.set(-7, 14, 6); sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024);
+    var sc = sun.shadow.camera; sc.left = -12; sc.right = 12; sc.top = 12; sc.bottom = -12; sc.near = 1; sc.far = 45; sun.shadow.bias = -.0015;
+    scene.add(sun);
+    var stage = new THREE.Group(); scene.add(stage);           // drag-rotated turntable
+    var MATS = {};
+    function mat(c) { return MATS[c] || (MATS[c] = new THREE.MeshLambertMaterial({color: c})); }
+    var RX = [-2, 2.2], RZ = [-1.5, 2], RW = .9;
+    var TOWERS_AT = [[-4.1, -3.4], [4.3, 3.7], [-4.3, 3.6]];
+    var cDark = new THREE.Color(0x5d7489), cOff = new THREE.Color(0x46505a), cLit = new THREE.Color(0xffc861), cTmp = new THREE.Color();
+
+    function hash(str) { var h = 7; for (var i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) % 2147483647; return h || 7; }
+
+    // Builds one neighbourhood. state: 'on' (live towers), 'soon' (one tower going up), 'off' (no towers yet)
+    function build(name, state) {
+      var seed = hash(name);
+      function rand() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+      var g = new THREE.Group(), geos = [];
+      function box(w, h, d, c, x, y, z, flat) {
+        var geo = new THREE.BoxGeometry(w, h, d); geos.push(geo);
+        var m = new THREE.Mesh(geo, mat(c)); m.position.set(x, y, z); m.castShadow = !flat; m.receiveShadow = true; g.add(m); return m;
+      }
+      function onRoad(x, z, pad) { return RX.some(function (rx) { return Math.abs(x - rx) < RW / 2 + pad; }) || RZ.some(function (rz) { return Math.abs(z - rz) < RW / 2 + pad; }); }
+      var towerSpots = state === 'on' ? TOWERS_AT : state === 'soon' ? [TOWERS_AT[0]] : [];
+      function nearTower(x, z) { return towerSpots.some(function (t) { return Math.hypot(x - t[0], z - t[1]) < .75; }); }
+
+      box(12.6, .5, 10.6, state === 'off' ? 0xd2c9b6 : 0xd8cdb4, 0, -.25, 0, true);
+      RX.forEach(function (x) {
+        box(RW, .04, 10.6, 0x4b525a, x, .02, 0, true);
+        for (var z = -5; z < 5.2; z += .8) box(.06, .045, .36, 0xf2efe6, x, .03, z, true);
+        box(.12, .08, 10.6, 0xe7e1d3, x - RW / 2 - .06, .04, 0, true); box(.12, .08, 10.6, 0xe7e1d3, x + RW / 2 + .06, .04, 0, true);
+      });
+      RZ.forEach(function (z) {
+        box(12.6, .041, RW, 0x4b525a, 0, .021, z, true);
+        for (var x = -6.2; x < 6.3; x += .8) if (RX.every(function (rx) { return Math.abs(x - rx) > .6; })) box(.36, .046, .06, 0xf2efe6, x, .032, z, true);
+        box(12.6, .08, .12, 0xe7e1d3, 0, .04, z - RW / 2 - .06, true); box(12.6, .08, .12, 0xe7e1d3, 0, .04, z + RW / 2 + .06, true);
+      });
+
+      var plg = new THREE.CircleGeometry(.62, 40); geos.push(plg);
+      var plaza = new THREE.Mesh(plg, mat(0xece6d8)); plaza.rotation.x = -Math.PI / 2; plaza.position.set(.1, .015, .25); plaza.receiveShadow = true; g.add(plaza);
+      var HOUSE = [0xf5f0e7, 0xefe5d3, 0xe9dcc4, 0xf7f3ec, 0xe3d6bf], homes = [], spots = [];
+      for (var gx = -5.5; gx <= 5.6; gx += 1.15) for (var gz = -4.4; gz <= 4.5; gz += 1.15) {
+        var jx = gx + (rand() - .5) * .2, jz = gz + (rand() - .5) * .2;
+        if (onRoad(jx, jz, .62) || nearTower(jx, jz) || Math.hypot(jx - .1, jz - .25) < .8) continue;
+        if (rand() < .2) {
+          if (rand() < .6) {
+            box(.07, .9, .07, 0x8a6a45, jx, .45, jz);
+            for (var f = 0; f < 5; f++) {
+              var cg = new THREE.ConeGeometry(.09, .55, 5); geos.push(cg);
+              var fr = new THREE.Mesh(cg, mat(0x5d8c34));
+              fr.position.set(jx + Math.cos(f * 1.26) * .2, .88, jz + Math.sin(f * 1.26) * .2);
+              fr.rotation.z = Math.cos(f * 1.26) * 1.2; fr.rotation.x = -Math.sin(f * 1.26) * 1.2; fr.castShadow = true; g.add(fr);
+            }
+          } else {
+            box(.08, .3, .08, 0x8a6a45, jx, .15, jz);
+            var sg = new THREE.SphereGeometry(.32, 12, 10); geos.push(sg);
+            var crown = new THREE.Mesh(sg, mat(0x6f9a3f)); crown.position.set(jx, .55, jz); crown.castShadow = true; g.add(crown);
+          }
+          continue;
+        }
+        var w = .72 + rand() * .22, d = .72 + rand() * .22, floors = 1 + Math.floor(rand() * rand() * 3.2), h = floors * .42 + .08;
+        box(w, h, d, HOUSE[Math.floor(rand() * HOUSE.length)], jx, h / 2, jz);
+        box(w, .05, d, 0xd9cdb6, jx, h + .005, jz, true);
+        box(w, .09, .05, 0xe9e0cf, jx, h + .045, jz + d / 2 - .025); box(w, .09, .05, 0xe9e0cf, jx, h + .045, jz - d / 2 + .025);
+        box(.05, .09, d, 0xe9e0cf, jx + w / 2 - .025, h + .045, jz); box(.05, .09, d, 0xe9e0cf, jx - w / 2 + .025, h + .045, jz);
+        if (rand() < .75) {
+          var tg = new THREE.CylinderGeometry(.09, .09, .2, 14); geos.push(tg);
+          var tank = new THREE.Mesh(tg, mat(rand() < .5 ? 0x2f6fa8 : 0xeef2f5));
+          tank.position.set(jx + (rand() - .5) * w * .5, h + .15, jz + (rand() - .5) * d * .5); tank.castShadow = true; g.add(tank);
+        }
+        if (rand() < .3) box(.18, .12, .12, 0xc9ccd0, jx - w * .25, h + .11, jz + d * .25);
+        var idx = homes.length; homes.push({x: jx, z: jz, lit: 0});
+        for (var fl = 0; fl < floors; fl++) {
+          var yy = .26 + fl * .42;
+          [-.2, .2].forEach(function (o) {
+            spots.push([jx + o * w, yy, jz + d / 2 + .003, 0, idx]); spots.push([jx + o * w, yy, jz - d / 2 - .003, Math.PI, idx]);
+            spots.push([jx + w / 2 + .003, yy, jz + o * d, Math.PI / 2, idx]); spots.push([jx - w / 2 - .003, yy, jz + o * d, -Math.PI / 2, idx]);
+          });
+        }
+      }
+      var pg = new THREE.PlaneGeometry(.14, .17); geos.push(pg);
+      var wins = new THREE.InstancedMesh(pg, new THREE.MeshBasicMaterial({color: 0xffffff}), Math.max(1, spots.length));
+      var dummy = new THREE.Object3D(), base = state === 'off' ? cOff : cDark;
+      spots.forEach(function (sp, i) { dummy.position.set(sp[0], sp[1], sp[2]); dummy.rotation.set(0, sp[3], 0); dummy.updateMatrix(); wins.setMatrixAt(i, dummy.matrix); wins.setColorAt(i, base); });
+      g.add(wins);
+
+      var towers = [];
+      towerSpots.forEach(function (p, i) {
+        var building = state === 'soon', H = building ? 1.7 : 3.1;
+        var mg = new THREE.CylinderGeometry(building ? .1 : .05, .2, H, 4, 6, true); geos.push(mg);
+        var mast = new THREE.Mesh(mg, new THREE.MeshLambertMaterial({color: building ? 0xcf9e46 : 0x15588f, wireframe: true}));
+        mast.position.set(p[0], H / 2, p[1]); g.add(mast);
+        box(.05, H, .05, building ? 0xcf9e46 : 0x15588f, p[0], H / 2, p[1]);
+        box(.46, .46, .46, 0xc2cad2, p[0], .23, p[1]);
+        if (building) {                                            // a small crane beside it
+          box(.06, 2.4, .06, 0xe0b43c, p[0] + .7, 1.2, p[1] + .1);
+          box(1.5, .06, .06, 0xe0b43c, p[0] + .35, 2.4, p[1] + .1);
+        } else {
+          [0, 1.57, 3.14].forEach(function (a) { var ant = box(.06, .34, .12, 0xf3f5f7, p[0] + Math.cos(a) * .12, 2.85, p[1] + Math.sin(a) * .12); ant.rotation.y = -a; });
+        }
+        var bg = new THREE.SphereGeometry(.07, 12, 12); geos.push(bg);
+        var beacon = new THREE.Mesh(bg, new THREE.MeshBasicMaterial({color: building ? 0xcf9e46 : (i === 0 ? 0x91c546 : 0xcf9e46)}));
+        beacon.position.set(p[0], H + .08, p[1]); g.add(beacon);
+        var rg = new THREE.RingGeometry(.93, 1, 72); geos.push(rg);
+        var rings = (building ? [0] : [0, 1]).map(function () {
+          var ring = new THREE.Mesh(rg, new THREE.MeshBasicMaterial({color: building ? 0xcf9e46 : 0x91c546, transparent: true, side: THREE.DoubleSide, depthWrite: false}));
+          ring.rotation.x = -Math.PI / 2; ring.position.set(p[0], .09, p[1]); g.add(ring); return ring;
+        });
+        towers.push({x: p[0], z: p[1], rings: rings, off: i * .33, beacon: beacon, reach: building ? 2.2 : 6.5});
+      });
+      homes.forEach(function (hm) {
+        var best = 1e9; towers.forEach(function (t) { var dd = Math.hypot(hm.x - t.x, hm.z - t.z); if (dd < best) { best = dd; hm.tw = t; } });
+        hm.d = best; if (reduce && state === 'on') hm.lit = 1;
+      });
+
+      var cars = [];
+      if (state !== 'off') {
+        var CARC = [0xd94b3d, 0xf2f2f2, 0x2c3e50, 0x3a7bd5, 0xe0b43c, 0x9aa3ab];
+        [['x', RZ[0] - .2, -4, .9], ['x', RZ[0] + .2, 3, -.7], ['x', RZ[1] - .2, 0, 1.1], ['x', RZ[1] + .2, -2, -.8], ['z', RX[0] + .2, -3, .8], ['z', RX[1] - .2, 2, -1]].forEach(function (c, i) {
+          var cg2 = new THREE.Group();
+          var bgeo = new THREE.BoxGeometry(.42, .12, .22), tgeo = new THREE.BoxGeometry(.22, .09, .19); geos.push(bgeo, tgeo);
+          var b = new THREE.Mesh(bgeo, mat(CARC[(i + Math.floor(rand() * 6)) % 6])); b.position.y = .1; b.castShadow = true; cg2.add(b);
+          var top = new THREE.Mesh(tgeo, mat(0x33424f)); top.position.set(-.02, .2, 0); cg2.add(top);
+          g.add(cg2); cars.push({g: cg2, axis: c[0], lane: c[1], pos: c[2] + rand() * 2, speed: c[3]});
+        });
+      }
+      return {group: g, geos: geos, homes: homes, spots: spots, wins: wins, towers: towers, cars: cars, state: state};
+    }
+
+    // the location pin that drops on every move
+    var pin = new THREE.Group();
+    var head = new THREE.Mesh(new THREE.SphereGeometry(.34, 24, 18), new THREE.MeshLambertMaterial({color: 0x15588f})); head.position.y = 1.35; head.castShadow = true;
+    var tip = new THREE.Mesh(new THREE.ConeGeometry(.3, .9, 24), new THREE.MeshLambertMaterial({color: 0x15588f})); tip.rotation.x = Math.PI; tip.position.y = .85; tip.castShadow = true;
+    var dot = new THREE.Mesh(new THREE.SphereGeometry(.14, 16, 12), new THREE.MeshBasicMaterial({color: 0xffffff})); dot.position.set(0, 1.38, .26);
+    pin.add(head, tip, dot);
+    var shadowDisc = new THREE.Mesh(new THREE.CircleGeometry(.35, 32), new THREE.MeshBasicMaterial({color: 0x0e1c2b, transparent: true, opacity: .25, depthWrite: false}));
+    shadowDisc.rotation.x = -Math.PI / 2; shadowDisc.position.y = .1;
+    var splash = new THREE.Mesh(new THREE.RingGeometry(.9, 1, 64), new THREE.MeshBasicMaterial({color: 0x15588f, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false}));
+    splash.rotation.x = -Math.PI / 2; splash.position.y = .12;
+    var pinSpot = new THREE.Group(); pinSpot.position.set(.1, 0, .25); pinSpot.add(pin, shadowDisc, splash); stage.add(pinSpot);
+
+    var cur = null, leaving = [], lastName = null;
+    function dispose(c) { stage.remove(c.group); c.geos.forEach(function (gg) { gg.dispose(); }); c.wins.material.dispose(); c.towers.forEach(function (t) { t.rings.forEach(function (rr) { rr.material.dispose(); }); }); }
+    function go(name, state) {
+      if (name === lastName && cur && cur.state === state) return;
+      lastName = name;
+      var next = build(name, state);
+      stage.add(next.group);
+      var old = cur; cur = next;
+      if (!window.gsap || reduce || !old) {
+        if (old) dispose(old);
+        pin.position.y = 0; return;
+      }
+      leaving.push(old);
+      // pan the map: old slides away, the new area slides in from the far side
+      var dir = hash(name) % 2 ? 1 : -1;
+      next.group.position.set(16 * dir, 0, -16 * dir * .35);
+      gsap.to(old.group.position, {x: -16 * dir, z: 16 * dir * .35, duration: 1.1, ease: 'power3.inOut', onComplete: function () { leaving = leaving.filter(function (l) { return l !== old; }); dispose(old); }});
+      gsap.to(old.group.scale, {x: .85, y: .85, z: .85, duration: 1.1, ease: 'power3.inOut'});
+      next.group.scale.setScalar(.85);
+      gsap.to(next.group.position, {x: 0, z: 0, duration: 1.1, ease: 'power3.inOut'});
+      gsap.to(next.group.scale, {x: 1, y: 1, z: 1, duration: 1.1, ease: 'power3.inOut'});
+      gsap.to(stage.rotation, {y: stage.rotation.y + dir * .5, duration: 1.3, ease: 'power2.inOut'});
+      // pin lifts off, then drops with a bounce and a splash ring
+      gsap.timeline()
+        .to(pin.position, {y: 7, duration: .45, ease: 'power2.in'})
+        .set(pin.position, {y: 9}, '+=.35')
+        .to(pin.position, {y: 0, duration: .9, ease: 'bounce.out'})
+        .fromTo(splash.scale, {x: .2, y: .2, z: .2}, {x: 3.2, y: 3.2, z: 3.2, duration: .9, ease: 'power2.out'}, '-=.55')
+        .fromTo(splash.material, {opacity: .8}, {opacity: 0, duration: .9, ease: 'power2.out'}, '<');
+      next.homes.forEach(function (hm) { hm.lit = 0; });
+    }
+    cityGo = go;
+    if (pendingArea) go(pendingArea[0], pendingArea[1]);
+
+    fit(r, cam, canvas, 6.9);
+    var drag = false, lx = 0, vel = 0;
+    canvas.addEventListener('pointerdown', function (e) { drag = true; lx = e.clientX; canvas.setPointerCapture(e.pointerId); });
+    canvas.addEventListener('pointermove', function (e) { if (!drag) return; var dd = (e.clientX - lx) * .008; lx = e.clientX; stage.rotation.y += dd; vel = dd; if (reduce) r.render(scene, cam); });
+    canvas.addEventListener('pointerup', function () { drag = false; });
+    canvas.addEventListener('pointercancel', function () { drag = false; });
+
+    var PERIOD = 3.4;
+    function tick(c, t, dt) {
+      c.towers.forEach(function (tw) {
+        tw.rings.forEach(function (ring, k) {
+          var ph = ((t / PERIOD) + tw.off + k * .5) % 1;
+          ring.scale.setScalar(Math.max(.01, ph * tw.reach)); ring.material.opacity = (1 - ph) * .7;
+        });
+        tw.beacon.scale.setScalar(1 + .35 * Math.max(0, Math.sin(t * 5 + tw.off * 9)));
+      });
+      if (c.state === 'on' && !reduce) c.homes.forEach(function (hm) {
+        var tw = hm.tw, hit = 0;
+        [0, .5].forEach(function (k) { var gap = (((t / PERIOD) + tw.off + k) % 1) * tw.reach - hm.d; if (gap > 0 && gap < .5) hit = 1; });
+        hm.lit = hit ? 1 : (hm.lit > 0 ? Math.max(.55, hm.lit - dt * .6) : 0);
+      });
+      var base = c.state === 'off' ? cOff : cDark;
+      c.spots.forEach(function (sp, i) { c.wins.setColorAt(i, cTmp.copy(base).lerp(cLit, c.homes[sp[4]].lit)); });
+      if (c.wins.instanceColor) c.wins.instanceColor.needsUpdate = true;
+      c.cars.forEach(function (cc) {
+        cc.pos += cc.speed * dt; if (cc.pos > 6.2) cc.pos = -6.2; if (cc.pos < -6.2) cc.pos = 6.2;
+        if (cc.axis === 'x') { cc.g.position.set(cc.pos, 0, cc.lane); cc.g.rotation.y = cc.speed > 0 ? 0 : Math.PI; }
+        else { cc.g.position.set(cc.lane, 0, cc.pos); cc.g.rotation.y = cc.speed > 0 ? -Math.PI / 2 : Math.PI / 2; }
+      });
+    }
+    animateWhileVisible(canvas, function (t, dt) {
+      if (!drag) { vel *= Math.pow(.05, dt); stage.rotation.y += vel + dt * .04; }
+      pin.rotation.y = t * 1.2;
+      if (cur) tick(cur, t, dt);
+      leaving.forEach(function (c) { tick(c, t, dt); });
+      r.render(scene, cam);
+    });
+  })();
+})();
+</script>
+</body>
+</html>
